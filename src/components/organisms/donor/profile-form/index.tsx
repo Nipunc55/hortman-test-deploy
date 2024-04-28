@@ -187,7 +187,8 @@ const ProfileForm = () => {
                       placeholder={""}
                       value={values.alternatePhoneNum}
                       name="alternatePhoneNum"
-                      onInputChange={handleChange}
+                      onInputChange={() => {}}
+                      disabled={true}
                     />
                   </div>
                   <div className="flex-1">

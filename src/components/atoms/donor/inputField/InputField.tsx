@@ -11,8 +11,10 @@ const InputField = ({
   name,
   styles,
   type = "text",
-  required
+  required,
+  disabled = false
 }: {
+  disabled?: boolean;
   label?: string;
   placeholder: string;
   value: string;
@@ -59,6 +61,7 @@ const InputField = ({
           onChange={onInputChange}
           name={name}
           required={required}
+          disabled={disabled}
         />
       </div>
     </div>

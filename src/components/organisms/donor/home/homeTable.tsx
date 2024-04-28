@@ -5,6 +5,8 @@ import HomeTableRow from "../../../molecules/donor/home/table/homeTableRow";
 import { getDataFromLocalStorage } from "../../../../utils/common/accessLocalStorage";
 import { getUserById } from "../../../../api/user";
 import { getDonorApplicationByUserId } from "../../../../api/donor_application";
+import { generateToken } from "../../../../firebase/config";
+import { registerDevice } from "../../../../api/deviceTokens";
 
 const HomeTable = () => {
   const [userData, setUserData] = useState<{
@@ -27,7 +29,28 @@ const HomeTable = () => {
       alert(apiError.response.data.message);
     }
   };
+  useEffect(() => {
+    let isMounted = true; // Flag to track component mounting state
 
+    async function getToken() {
+      const notificationToken = localStorage.getItem("notification_token");
+      if (!notificationToken) {
+        const token = await generateToken();
+
+        if (isMounted && token) {
+          await registerDevice("token", token, "WEB");
+          localStorage.setItem("notification_token", token);
+        }
+      }
+    }
+
+    void getToken();
+
+    // Cleanup function to cancel any pending tasks when component unmounts
+    return () => {
+      isMounted = false; // Mark component as unmounted
+    };
+  }, []);
   const loadData = async () => {
     const userId = await getDataFromLocalStorage("userId");
     const { apiError, apiSuccess }: any =

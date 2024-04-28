@@ -38,11 +38,12 @@ const UserTableRows = ({ data }: { data: any }) => {
                     ? `${item?.email.substring(0, 25)}...`
                     : item?.email ?? t("N/A")}
                 </div>
-                <div className="flex-[3]">
-                  {item?.role === "DONOR" && "Donor"}
+                <div className="flex-[3] capitalize">
+                  {item?.role.toLowerCase()}
+                  {/* {item?.role === "DONOR" && "Donor"}
                   {item?.role === "ADMIN" && "Administrator"}
                   {item?.role === "Administrator" && "Administrator"}
-                  {item?.role === "HEALTH" && "Health Profess"}
+                  {item?.role === "HEALTH" && "Health Profess"} */}
                 </div>
                 <div className="flex-[2]">
                   {item?.is_active ? (

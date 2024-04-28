@@ -59,7 +59,7 @@ const UserCreateModal = ({ open, handleOpen }: UserCreateModalModalProps) => {
       const { apiSuccess, apiError }: any = await addUser(
         values.fullName,
         values.email,
-        values.mobileNumber,
+        "+971" + values.mobileNumber,
         values.role,
         values.status
       );
@@ -196,7 +196,8 @@ const UserCreateModal = ({ open, handleOpen }: UserCreateModalModalProps) => {
                     color="blue-gray"
                     className="flex h-10 w-[100px] text-sm px-2 items-center gap-1 rounded-r-none bg-white/10 outline-none text-black font-normal"
                   >
-                    {countryCallingCode}
+                    +971
+                    {/* {countryCallingCode} */}
                     <DropDownArrow />
                   </Button>
                 </MenuHandler>

@@ -52,30 +52,45 @@ import MoreInfoPage from "./pages/donor/more-Info";
 import BasicLayout from "./layout/donor/BasicLayout";
 import EducationalMaterialBlogHealtchCare from "./pages/admin/educationalMaterial/educationalMaterialHealthCare";
 import NotificationsAdmin from "./pages/admin/notifications";
-import { generateToken } from "./firebase/config";
+// import { generateToken } from "./firebase/config";
 // import { onMessage } from "firebase/messaging";
 import { ToastContainer } from "react-toastify";
-import { registerDevice } from "./api/deviceTokens";
+// import { registerDevice } from "./api/deviceTokens";
 
 function App() {
-  async function getToken() {
-    const notificationToken = localStorage.getItem("notification_token");
-    if (notificationToken) return;
-    const token = await generateToken();
+  // async function getToken() {
+  //   const notificationToken = localStorage.getItem("notification_token");
+  //   if (notificationToken) return;
+  //   const token = await generateToken();
 
-    if (token) {
-      await registerDevice("token", token, "WEB");
-      localStorage.setItem("notification_token", token);
-    }
-  }
-  useEffect(() => {
-    void getToken();
+  //   if (token) {
+  //     await registerDevice("token", token, "WEB");
+  //     localStorage.setItem("notification_token", token);
+  //   }
+  // }
+  const [locale, setLocale] = useState(i18n.language);
+  // useEffect(() => {
+  //   let isMounted = true; // Flag to track component mounting state
 
-    // onMessage(messaging, (payload: any) => {
-    //   toast.success(payload?.notification?.title);
-    //   console.log("payload", payload);
-    // });
-  }, []);
+  //   async function getToken() {
+  //     const notificationToken = localStorage.getItem("notification_token");
+  //     if (!notificationToken) {
+  //       const token = await generateToken();
+
+  //       if (isMounted && token) {
+  //         await registerDevice("token", token, "WEB");
+  //         localStorage.setItem("notification_token", token);
+  //       }
+  //     }
+  //   }
+
+  //   void getToken();
+
+  //   // Cleanup function to cancel any pending tasks when component unmounts
+  //   return () => {
+  //     isMounted = false; // Mark component as unmounted
+  //   };
+  // }, []);
   useEffect(() => {
     if (window.location.pathname === "/") window.location.replace("/login");
   }, [1]);
@@ -209,8 +224,6 @@ function App() {
       </Route>
     )
   );
-
-  const [locale, setLocale] = useState(i18n.language);
 
   i18n.on("languageChanged", (_lng) => setLocale(i18n.language));
 
