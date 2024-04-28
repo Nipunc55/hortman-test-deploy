@@ -87,7 +87,7 @@
     "vite": "^5.0.0"
   },
   "main": "index.js",
-  "repository": "https://github.com/Parallax-Projects/hortman-stem-cell-fe.git",
-  "author": "FazidSamoon <tuan.fazid@outlook.com>",
+  "repository": "",
+  "author": "",
   "license": "MIT"
 }

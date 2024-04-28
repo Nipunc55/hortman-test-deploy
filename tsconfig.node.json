@@ -8,5 +8,8 @@
   },
   "include": ["vite.config.ts"],
 
-  "exclude": ["public/firebase-messaging-sw.js"]
+  "exclude": [
+    "public/firebase-messaging-sw.js",
+    "node_modules/third_party_library/**/*"
+  ]
 }
