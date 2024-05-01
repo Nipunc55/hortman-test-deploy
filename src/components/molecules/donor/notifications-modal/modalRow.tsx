@@ -48,7 +48,7 @@ const ModalRow = ({ data }: { data: any }) => {
         </>
       ) : (
         <>
-          <div className="w-full my-10 h-20 flex flex-col">
+          <div className="w-full my-10 h-20 flex flex-col ">
             <p className="absolute text-center mx-auto italic right-0 left-0 w-full">
               There are no data to be displayed
             </p>

@@ -101,7 +101,7 @@ const KitStatus = () => {
   useEffect(() => {
     void getKitDispatchDetail();
     void getpickupDetails();
-  }, []);
+  }, [modalOpen]);
 
   return (
     <div className="px-6 pt-6 w-full min-h-screen ">
@@ -143,13 +143,13 @@ const KitStatus = () => {
           </div>
           <div className="flex justify-between items-start w-full">
             <div className="flex flex-col gap-2.5">
-              <div className="">August 19, 2023 23:15:30</div>
+              {/* <div className="">August 19, 2023 23:15:30</div>
               <div className="">Ibrar Ahmed</div>
               <div className="flex flex-col gap-1.5">
                 <span className="">Mr. abdullah naim</span>
                 <span className="">+971 50 1234567</span>
                 <span>27V7+QC5 - Arabian Ranches - Alvorada - Dubai</span>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -191,13 +191,13 @@ const KitStatus = () => {
           </div>
           <div className="flex justify-between items-start w-full">
             <div className="flex flex-col gap-2.5">
-              <div className="font-medium">September 01, 2023 23:15:30</div>
+              {/* <div className="font-medium">September 01, 2023 23:15:30</div>
               <div className="font-medium">Ibrar Ahmed</div>
               <div className="flex flex-col">
                 <span className="font-medium">Mr. abdullah naim</span>
                 <span className="font-medium">+971 50 1234567</span>
                 <span>27V7+QC5 - Arabian Ranches - Alvorada - Dubai</span>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -211,9 +211,9 @@ const KitStatus = () => {
           </div>
           <div className="flex justify-between items-start w-full">
             <div className="flex flex-col gap-1.5">
-              <div>September 01, 2023 23:15:30</div>
+              {/* <div>September 01, 2023 23:15:30</div>
               <div>Mr. Shahin</div>
-              <div>Received by Shahin from Ibrar Ahmad </div>
+              <div>Received by Shahin from Ibrar Ahmad </div>*/}
             </div>
             <div>
               <button

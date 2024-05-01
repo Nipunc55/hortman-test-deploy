@@ -121,7 +121,8 @@ const DonorApplicationTableRow = ({ data }: { data: any }) => {
                       onClick={() =>
                         handleButtonRejectedModalClick(
                           item?.user?._id,
-                          item?.application_status?._id
+                          // item?.application_status?._id
+                          item?._id
                         )
                       }
                       className="text-base text-red-650 focus:text-red-650 font-normal text-left"

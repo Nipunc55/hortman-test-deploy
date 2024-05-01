@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import ActionButton from "../../../../atoms/admin/buttons/ActionButton";
 import DropDownArrow from "../../../../../assets/svg/dropDownArrow";
+import { t } from "i18next";
 
 const PaymentTableRow = ({ data }: { data: any }) => {
   const getDateValue = (dateInput: string) => {
@@ -40,8 +41,9 @@ const PaymentTableRow = ({ data }: { data: any }) => {
                   {item?.type ?? ""}
                 </div>
                 <div className="flex-[2] flex items-center gap-2">
-                  <span>AED</span>
+                  {/* <span></span> */}
                   <span className="text-base font-medium">
+                    {t("$")}
                     {item?.amount ?? ""}
                   </span>
                 </div>

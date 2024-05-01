@@ -40,9 +40,9 @@ const EligibiltyAssessment = () => {
     );
     setIsLoading(false);
     if (apiSuccess && apiSuccess.status === 200) {
-      setNotificationsData(apiSuccess.data.data);
-      console.log(apiSuccess.data.data);
-      console.log(notificationsData);
+      setNotificationsData(apiSuccess?.data?.data);
+      console.log(apiSuccess?.data?.data);
+
       setIsLoading(false);
     } else if (apiError) {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument

@@ -114,7 +114,8 @@ const ApplicationRejectionModal = ({
 
   const { values } = formik;
 
-  const options = [{ value: "Eligibility Rejection", label: "Rejection" }];
+  // const options = [{ value: "Eligibility Rejection", label: "Rejection" }];
+  const options = [{ value: "REJECTED", label: "Rejection" }];
 
   const loadPersonalData = async () => {
     const userId = await getDataFromLocalStorage("adminUserId");
