@@ -11,6 +11,7 @@ import { type singlePaymentType } from "../../../../../types/Payments";
 import StatusBadges from "../../../../atoms/admin/badges/statusBadges";
 import ActionButton from "../../../../atoms/admin/buttons/ActionButton";
 import DropDownArrow from "../../../../../assets/svg/dropDownArrow";
+import { t } from "i18next";
 
 const PaymentTableRow = ({ data }: { data: singlePaymentType[] }) => {
   // const [isRejectionModalOpen, setIsRejectionModalOpen] =
@@ -32,7 +33,7 @@ const PaymentTableRow = ({ data }: { data: singlePaymentType[] }) => {
             </div>
             <div className="flex-[2] flex items-center">{item?.type ?? ""}</div>
             <div className="flex-[2] flex items-center gap-2">
-              <span>AED</span>
+              <span>{t("$")}</span>
               <span className="text-base font-medium">
                 {item?.amount ?? ""}
               </span>

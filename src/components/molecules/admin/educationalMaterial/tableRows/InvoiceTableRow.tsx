@@ -32,7 +32,7 @@ const InvoiceTableRow = ({
     };
   }, []);
 
-  console.log(selectedInvoiceId);
+  // console.log(selectedInvoiceId);
 
   const totalAmount = parseInt(data?.amount);
 
@@ -131,7 +131,7 @@ const InvoiceTableRow = ({
           <div ref={invoiceRef}>
             <div className="flex justify-between items-center p-5 ">
               <TableTitle
-                text={`${invoice === undefined ? "Invoice #" : invoice}`}
+                text={`${invoice === undefined ? "Invoice " : invoice}`}
                 textSize="text-6xl"
                 color="text-textSecondary"
               />
@@ -142,9 +142,9 @@ const InvoiceTableRow = ({
                   <span className="text-inputText text-sm font-normal">
                     {t("status")}
                   </span>
-                  {/* <span className="text-black-500 font-normal text-base">
-              {selectedInvoice.status}
-            </span> */}
+                  <span className="text-black-500 font-normal text-base">
+                    {data.status}
+                  </span>
                 </div>
                 <div className="flex flex-col gap-px">
                   <span className="text-inputText text-sm font-normal">
@@ -192,10 +192,10 @@ const InvoiceTableRow = ({
                       {`Credit Card : **** ${data?.digits}`}
                     </span>
                     <span className="text-black-500 text-base font-normal">
-                      {data?.bankDeatils ||
-                        "Armani Beach Residences Palm Jumeirah,"}{" "}
+                      {data?.bankDeatils || ""}
+
                       <br />
-                      {data?.userCountry || "Dubai - United Arab Emirates"}
+                      {data?.userCountry || ""}
                     </span>
                   </div>
                 </div>
@@ -259,7 +259,9 @@ const InvoiceTableRow = ({
                       }`}
                     >
                       <span>{t("total")}</span>
-                      <span>AED {totalAmount}</span>
+                      <span>
+                        {t("$")} {totalAmount}
+                      </span>
                     </div>
                   </div>
                 </div>

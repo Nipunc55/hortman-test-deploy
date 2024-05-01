@@ -61,8 +61,8 @@ const InvoiceTableRow = ({
     return inputDate.toLocaleDateString("en-US", options);
   };
 
-  console.log(data, "payment by ID");
-  console.log(totalAmount);
+  // console.log(data, "payment by ID");
+  // console.log(totalAmount);
 
   return (
     <>
@@ -74,9 +74,9 @@ const InvoiceTableRow = ({
                 <span className="text-inputText text-sm font-normal">
                   {t("status")}
                 </span>
-                {/* <span className="text-black-500 font-normal text-base">
-              {selectedInvoice.status}
-            </span> */}
+                <span className="text-black-500 font-normal text-base">
+                  {data?.status}
+                </span>
               </div>
               <div className="flex flex-col gap-px">
                 <span className="text-inputText text-sm font-normal">
@@ -97,7 +97,7 @@ const InvoiceTableRow = ({
                     Hortman Stem Cell Laboratory
                   </span>
                   <span className="text-inputText text-sm font-normal">
-                    name@email.com
+                    Hortman@email.com
                   </span>
                   <span className="text-black-500 text-base font-normal">
                     EmiratesNBD Bank #0123456789
@@ -124,10 +124,9 @@ const InvoiceTableRow = ({
                     {`Credit Card : **** ${data?.digits}`}
                   </span>
                   <span className="text-black-500 text-base font-normal">
-                    {data?.bankDeatils ||
-                      "Armani Beach Residences Palm Jumeirah,"}{" "}
+                    {data?.bankDeatils || " "}
                     <br />
-                    {data?.userCountry || "Dubai - United Arab Emirates"}
+                    {data?.userCountry || " "}
                   </span>
                 </div>
               </div>
@@ -152,6 +151,7 @@ const InvoiceTableRow = ({
               </div>
               <div className="flex flex-col gap-px justify-center">
                 <span className="text-black-500 font-normal text-base">
+                  {t("$")}
                   {data?.package?.price}
                 </span>
               </div>
@@ -167,7 +167,10 @@ const InvoiceTableRow = ({
                     }`}
                   >
                     <span>{t("total")}</span>
-                    <span>{data?.amount}</span>
+                    <span>
+                      {t("$")}
+                      {data?.amount}
+                    </span>
                   </div>
                   <div
                     className={`text-inputText text-sm font-normal flex justify-between ${
@@ -191,7 +194,10 @@ const InvoiceTableRow = ({
                     }`}
                   >
                     <span>{t("total")}</span>
-                    <span>AED {totalAmount}</span>
+                    <span>
+                      {t("$")}
+                      {totalAmount}
+                    </span>
                   </div>
                 </div>
               </div>

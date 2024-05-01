@@ -61,7 +61,7 @@ export const getPayments = async (
     .get(
       `/payments?${
         isAscending ? 1 : -1
-      }&page=${page}&limit=${limit}&donor=${donorName || ""}&pkg=${packageCategory || ""}${dateFilter ? `&filter[created_at]=${dateFilter}` : ""}`,
+      }&page=${page}&limit=${limit}&donor=${donorName || ""}&pkg=${packageCategory || ""}${dateFilter ? `&filter[created_at]=${dateFilter}` : ""}&sort[created_at]=-1`,
       configurations
     )
     .then(function (response) {
@@ -78,7 +78,7 @@ export const getMyPayments = async () => {
   let apiSuccess = null;
   let apiError = null;
   await axiosInstance
-    .get(`/payments/me/all`)
+    .get(`/payments/me/all?sort[created_at]=-1`)
     .then(function (response) {
       apiSuccess = response;
     })

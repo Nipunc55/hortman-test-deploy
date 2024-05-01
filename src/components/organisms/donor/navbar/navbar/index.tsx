@@ -20,7 +20,7 @@ const navItems = [
   },
   {
     // name: "Stem Cell Packages",
-    name: "Stem Cell Packages",
+    name: "Packages",
     path: "/donor/stem-cell-packages",
     value: "2"
   },

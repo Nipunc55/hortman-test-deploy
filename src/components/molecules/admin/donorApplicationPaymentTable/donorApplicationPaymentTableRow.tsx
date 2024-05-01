@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getPaymentsByApplicationId } from "../../../../api/payment";
 import { useParams } from "react-router-dom";
 import ApplicationNotificationModal from "../modals/ApplicationNotificationModal";
+import { t } from "i18next";
 
 const DonorApplicationPaymentTableRow = () => {
   const [isError, setIsError] = useState(false);
@@ -100,7 +101,8 @@ const DonorApplicationPaymentTableRow = () => {
                       {paymentData?.type}
                     </div>
                     <div className="flex-[2] flex items-center font-medium  ">
-                      AED {paymentData?.amount}
+                      {t("$")}
+                      {paymentData?.amount}
                     </div>
                     <div className="flex-[2] flex items-center  gap-2 ">
                       <span>
@@ -108,13 +110,13 @@ const DonorApplicationPaymentTableRow = () => {
                       </span>
                     </div>
                     <div className="flex-[2.4] flex items-center  gap-2 ">
-                      <Button
+                      {/* <Button
                         placeholder={""}
                         onClick={handleButtonClick}
                         className="payment-request-button text-black-500 text-sm font-normal max-h-[30px] flex items-center text-center capitalize"
                       >
                         Payment Request
-                      </Button>
+                      </Button> */}
                     </div>
                   </>
                 ))}

@@ -11,6 +11,8 @@ import { useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getDataFromLocalStorage } from "../../../../utils/common/accessLocalStorage";
 import { getDonorApplicationByUserId } from "../../../../api/donor_application";
+import { updateApplicationStatusByUser } from "../../../../api/donor";
+import { formattedDateForStatus } from "../../../../utils/common/utilityFunctions";
 
 const PaymentTable = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -98,10 +100,23 @@ const PaymentTable = () => {
       // toast.success("successfully updated invoice");
       setIsLoading(true);
       void getDonorPaymentsData();
+      void MarkPaymentComplete();
     }
     if (apiError) {
       // toast.error(apiError.message);
     }
+  };
+
+  const MarkPaymentComplete = async () => {
+    const { application } = {
+      application: await getDataFromLocalStorage("donorApplicationId")
+    };
+    const { apiError: updateAppApiError }: any =
+      await updateApplicationStatusByUser(
+        { type: "payments", date: formattedDateForStatus() },
+        application
+      );
+    if (updateAppApiError) console.log(updateAppApiError);
   };
   return (
     <div className="bg-tableBg w-full py-5 rounded-xl shadow-lg my-5 mb-16 min-h-[442px] ">

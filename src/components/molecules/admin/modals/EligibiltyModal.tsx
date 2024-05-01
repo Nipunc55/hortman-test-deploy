@@ -111,7 +111,9 @@ const EligibilityModal = ({ open, handleOpen }: NotificationsModalProps) => {
             applicationId.name
           );
         if (updateAppApiError) {
-          alert(updateAppApiError.response.data.message);
+          console.log(updateAppApiError);
+
+          // alert(updateAppApiError.response.data.message);
         }
         handleOpen(false);
       } else if (apiError) {

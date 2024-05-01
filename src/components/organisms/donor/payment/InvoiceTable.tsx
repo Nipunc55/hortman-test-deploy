@@ -46,7 +46,8 @@ const InvoiceTable = () => {
       <div className="bg-white w-full rounded-xl shadow-lg min-h-80">
         <div className="flex justify-between items-center p-5 ">
           <TableTitle
-            text={`${t("invoice")}  ${invoiceId}`}
+            // text={`${t("invoice")}  ${invoiceId}`}
+            text={`${t("invoice")} `}
             textSize="text-6xl"
             color="text-textSecondary"
           />

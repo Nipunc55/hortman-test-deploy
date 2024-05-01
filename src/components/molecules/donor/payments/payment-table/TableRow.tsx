@@ -6,6 +6,7 @@ import {
 } from "../../../../atoms/donor/badges/statusBadges";
 
 import PaymentsDownload from "../../../../../assets/svg/paymentsDownload";
+import { t } from "i18next";
 
 const PaymentTableRow = ({ data }: { data: singlePaymentTableRowType[] }) => {
   const getDateValue = (dateInput: string) => {
@@ -38,8 +39,9 @@ const PaymentTableRow = ({ data }: { data: singlePaymentTableRowType[] }) => {
                 {item?.type === "card" && "Credit Card"}
               </div>
               <div className="flex-[2] flex items-center gap-2">
-                <span>AED</span>
+                <span> </span>
                 <span className="text-base font-medium">
+                  {t("$")}
                   {item?.amount ?? ""}
                 </span>
               </div>

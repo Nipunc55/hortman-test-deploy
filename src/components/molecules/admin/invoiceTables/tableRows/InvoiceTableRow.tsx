@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import { type singlePaymentType } from "../../../../../types/Payments";
 import DownloadButton from "../../../../atoms/admin/buttons/DownloadButton";
 import ShareButton from "../../../../atoms/admin/buttons/ShareButton";
@@ -131,7 +132,10 @@ const InvoiceTableRow = ({
               </div>
               <div className=" text-sm font-medium flex justify-between pt-4">
                 <span>Total</span>
-                <span>AED {totalAmount}</span>
+                <span>
+                  {t("$")}
+                  {totalAmount}
+                </span>
               </div>
             </div>
           </div>
