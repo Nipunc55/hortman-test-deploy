@@ -129,10 +129,22 @@ export const profileDataValidationSchema = Yup.object().shape({
     .required("Please provide the mobile number")
     .matches(/^\+?[0-9]{7,15}$/, "Invalid mobile number format"),
 
+  // passport: Yup.string()
+  //   .required("Please provide the ID or passport number")
+  //   .test("valid-id-or-passport", "Invalid ID or passport format", (value) => {
+  //     const isEmiratesID = /^\d{15}$/.test(value);
+
+  //     const isPassport = /^[A-Za-z0-9]{9}$/i.test(value);
+  //     // console.log(isEmiratesID, isPassport);
+
+  //     // Return true if it matches either format
+  //     return isEmiratesID || isPassport;
+  //   })
   passport: Yup.string()
     .required("Please provide the ID or passport number")
     .test("valid-id-or-passport", "Invalid ID or passport format", (value) => {
-      const isEmiratesID = /^\d{15}$/.test(value);
+      // const isEmiratesID = /^\d{15}$/.test(value);
+      const isEmiratesID = /^\d{3}-\d{4}-\d{7}-\d{1}$/.test(value);
 
       const isPassport = /^[A-Za-z0-9]{9}$/i.test(value);
       // console.log(isEmiratesID, isPassport);

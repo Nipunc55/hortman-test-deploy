@@ -731,7 +731,7 @@ const MotherDetails = ({ setStep }: { setStep: (step: number) => void }) => {
           </div>
         )}
       </div>
-      <ToastContainer containerId={"friendRequest"} />
+      <ToastContainer />
     </div>
   );
 };

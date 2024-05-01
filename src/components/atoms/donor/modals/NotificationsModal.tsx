@@ -44,7 +44,7 @@ const NotificationsModal = ({
       const unviewedNotification: any = apiSuccess.data.data.find(
         (notification: any) => notification.is_viewed === false
       );
-
+      // alert(unviewedNotification);
       if (unviewedNotification && setIsNotificationModalOpen) {
         setIsNotificationModalOpen(true);
       }
@@ -78,6 +78,7 @@ const NotificationsModal = ({
     void getNotificationsData();
     onMessage(messaging, (payload: any) => {
       void getNotificationsData();
+      setIsNotificationModalOpen(true);
       // toast.success(payload?.notification?.title);
       console.log("message", payload);
     });

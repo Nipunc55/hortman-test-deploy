@@ -99,6 +99,7 @@ const TableRow = ({ data }: { data: singleNotificationTableRowType[] }) => {
                       }`}
                     >
                       {item?.notification_type}
+                      {"  "}
                       {item?.body}
                     </div>
                   </div>

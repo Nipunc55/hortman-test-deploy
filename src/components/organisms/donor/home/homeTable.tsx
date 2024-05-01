@@ -7,6 +7,7 @@ import { getUserById } from "../../../../api/user";
 import { getDonorApplicationByUserId } from "../../../../api/donor_application";
 import { generateToken } from "../../../../firebase/config";
 import { registerDevice } from "../../../../api/deviceTokens";
+import { useNotificationToken } from "../../../../utils/common/customHooks";
 
 const HomeTable = () => {
   const [userData, setUserData] = useState<{
@@ -14,6 +15,9 @@ const HomeTable = () => {
     role: string;
   } | null>(null);
   const [hclId, setHCLId] = useState("");
+  //custom hook for call notification device register
+  useNotificationToken();
+
   const loadPersonalData = async () => {
     localStorage.removeItem("donor_step");
     const userId = await getDataFromLocalStorage("donorUserId");
@@ -29,28 +33,28 @@ const HomeTable = () => {
       alert(apiError.response.data.message);
     }
   };
-  useEffect(() => {
-    let isMounted = true; // Flag to track component mounting state
+  // useEffect(() => {
+  //   let isMounted = true; // Flag to track component mounting state
 
-    async function getToken() {
-      const notificationToken = localStorage.getItem("notification_token");
-      if (!notificationToken) {
-        const token = await generateToken();
+  //   async function getToken() {
+  //     const notificationToken = localStorage.getItem("notification_token");
+  //     if (!notificationToken) {
+  //       const token = await generateToken();
 
-        if (isMounted && token) {
-          await registerDevice("token", token, "WEB");
-          localStorage.setItem("notification_token", token);
-        }
-      }
-    }
+  //       if (isMounted && token) {
+  //         await registerDevice("token", token, "WEB");
+  //         localStorage.setItem("notification_token", token);
+  //       }
+  //     }
+  //   }
 
-    void getToken();
+  //   void getToken();
 
-    // Cleanup function to cancel any pending tasks when component unmounts
-    return () => {
-      isMounted = false; // Mark component as unmounted
-    };
-  }, []);
+  //   // Cleanup function to cancel any pending tasks when component unmounts
+  //   return () => {
+  //     isMounted = false; // Mark component as unmounted
+  //   };
+  // }, []);
   const loadData = async () => {
     const userId = await getDataFromLocalStorage("userId");
     const { apiError, apiSuccess }: any =

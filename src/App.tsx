@@ -232,7 +232,7 @@ function App() {
       <LocaleContext.Provider value={{ locale, setLocale }}>
         <RouterProvider router={router} />
       </LocaleContext.Provider>
-      <ToastContainer containerId={"friendRequest"} />
+      <ToastContainer />
     </div>
   );
 }

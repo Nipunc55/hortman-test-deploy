@@ -100,7 +100,7 @@ const TableRow = () => {
           </>
         )}
       </>
-      <ToastContainer containerId={"friendRequest"} />
+      <ToastContainer />
     </div>
   );
 };

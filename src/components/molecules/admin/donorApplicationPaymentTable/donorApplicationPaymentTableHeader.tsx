@@ -115,14 +115,14 @@ const DonorApplicationPaymentTableHeader = () => {
   return (
     <div>
       <div className="flex justify-end items-end">
-        <div className="py-8 px-6">
-          <button
+        <div className="py-6 px-6">
+          {/* <button
             className="w-full h-10 px-6 py-2 bg-primary rounded-lg shadow justify-start items-center gap-1 inline-flex text-white hover:scale-95 cursor-pointer duration-1000"
             onClick={handleOpen}
           >
             <PlusIcon />
             Create Invoice
-          </button>
+          </button>  */}
         </div>
       </div>
       <div className="pb-3 items-center justify-center pl-6 flex flex-row font-normal text-base border-b-2  border-[#EFE8D8]">

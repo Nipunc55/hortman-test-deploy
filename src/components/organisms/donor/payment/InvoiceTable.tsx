@@ -7,7 +7,7 @@ import { getPaymentsById } from "../../../../api/payment";
 import { Alert } from "@material-tailwind/react";
 import LoaderIconSvg from "../../../../assets/svg/loaderIcon";
 
-import { ToastContainer } from "react-toastify";
+// import { ToastContainer } from "react-toastify";
 
 const InvoiceTable = () => {
   const { invoiceId } = useParams();
@@ -74,7 +74,7 @@ const InvoiceTable = () => {
           </>
         )}
       </div>
-      <ToastContainer containerId={"friendRequest"} />
+      {/* <ToastContainer /> */}
     </div>
   );
 };

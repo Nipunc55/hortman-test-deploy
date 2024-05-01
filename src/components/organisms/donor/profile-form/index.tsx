@@ -11,6 +11,7 @@ import { Alert } from "@material-tailwind/react";
 import LoaderIconSvg from "../../../../assets/svg/loaderIcon";
 import { ToastContainer, toast } from "react-toastify";
 import { profileDataValidationSchema } from "../../../../utils/validations";
+import { passportIdValidation } from "../../../../utils/common/validatePasport";
 const ProfileForm = () => {
   const navigate = useNavigate();
   const [isError, setIsError] = useState(false);
@@ -136,6 +137,31 @@ const ProfileForm = () => {
   useEffect(() => {
     void loadPersonalData();
   }, []);
+  const passportIdValidation = async (event: any) => {
+    const original = event.target.value;
+
+    let formattedValue = "";
+    if (original.startsWith("784")) {
+      // Remove dashes and limit to 16 characters
+      const processedValue = original.replace(/-/g, "").substring(0, 15);
+
+      // Add dashes after 3rd, 7th, and 14th characters
+      formattedValue =
+        processedValue.slice(0, 3) +
+        "-" +
+        processedValue.slice(3, 7) +
+        "-" +
+        processedValue.slice(7, 14) +
+        "-" +
+        processedValue.slice(14);
+
+      // setFormattedString(formattedValue);
+    } else {
+      formattedValue = original;
+    }
+    // return formattedValue;
+    await formik.setFieldValue("passport", formattedValue);
+  };
   return (
     <div className="flex justify-center items-center">
       <div className=" bg-white rounded-[20px]  mt-6 w-[50rem] mb-16">
@@ -209,7 +235,7 @@ const ProfileForm = () => {
                       label={t("emirates-id")}
                       placeholder={"784-1979-1234567-1"}
                       value={values.passport}
-                      onInputChange={handleChange}
+                      onInputChange={passportIdValidation}
                       name="passport"
                     />
                   </div>

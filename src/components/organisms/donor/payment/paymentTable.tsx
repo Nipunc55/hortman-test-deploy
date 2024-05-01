@@ -75,7 +75,7 @@ const PaymentTable = () => {
     console.log("paymentIntent", paymentIntent);
 
     if (paymentIntent && packageData) {
-      toast.success("successfully created payment");
+      // toast.success("successfully created payment");
       void createPaymentInoice(paymentIntent);
     }
   }, [packageData]);
@@ -95,12 +95,12 @@ const PaymentTable = () => {
       "location"
     );
     if (apiSuccess?.status === 200) {
-      toast.success("successfully updated invoice");
+      // toast.success("successfully updated invoice");
       setIsLoading(true);
       void getDonorPaymentsData();
     }
     if (apiError) {
-      toast.error(apiError.message);
+      // toast.error(apiError.message);
     }
   };
   return (

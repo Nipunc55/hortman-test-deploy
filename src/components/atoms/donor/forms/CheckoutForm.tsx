@@ -87,8 +87,8 @@ export const CheckoutForm = ({ paymentData }: any) => {
 
       // const headers = await getConfigurations();
 
-      // const amount = paymentData?.price * 1000 || 0;
-      const amount = "1000";
+      const amount = paymentData?.price * 100 || 0;
+      // const amount = "1000";
 
       // Create the PaymentIntent and obtain clientSecret from your server endpoint
       // const res = await fetch(backendUrl + "/payments/checkout", {
@@ -148,11 +148,11 @@ export const CheckoutForm = ({ paymentData }: any) => {
         // details incomplete)
         // setErrorMessage(error.message || "");
       } else {
-        toast.update(id, {
-          render: "Payment successfully created",
-          type: "success",
-          isLoading: false
-        });
+        // toast.update(id, {
+        //   render: "Payment successfully created",
+        //   type: "success",
+        //   isLoading: false
+        // });
         // alert("payment donne");
         // await createPaymentInoice();
         // Your customer will be redirected to your `return_url`. For some payment
@@ -162,7 +162,7 @@ export const CheckoutForm = ({ paymentData }: any) => {
     } catch (error: any) {
       console.log(error);
 
-      toast.error(error?.message);
+      // toast.error(error?.message);
     }
   };
 
@@ -291,7 +291,7 @@ export const CheckoutForm = ({ paymentData }: any) => {
         {/* Show error message to your customers */}
         {/* {errorMessage && <div>{errorMessage}</div>} */}
       </form>
-      <ToastContainer containerId={"friendRequest"} />
+      <ToastContainer />
     </>
   );
 };

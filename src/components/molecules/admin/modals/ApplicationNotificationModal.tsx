@@ -78,7 +78,10 @@ const ApplicationNotificationModal = ({
   const onRoleHandler = async (event: { value: string; label: string }) => {
     await formik.setFieldValue("notificationType", event.value);
   };
-  const options = [{ value: "PAYMENT REMINDER", label: "Payment Reminder" }];
+  const options = [
+    { value: "PAYMENT REMINDER", label: "Payment Reminder" },
+    { value: "CUSTOM NOTIFICATION", label: "Custom Notification" }
+  ];
 
   const resetForm = (e: any) => {
     formik.handleReset(e);

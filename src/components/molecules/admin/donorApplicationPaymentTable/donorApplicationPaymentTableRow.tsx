@@ -8,7 +8,7 @@ const DonorApplicationPaymentTableRow = () => {
   const [isError, setIsError] = useState(false);
   const [message, setMessage] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [paymentData, setPaymentData] = useState<any>(null);
+  const [paymentData, setPaymentData] = useState<any>([]);
   const name = useParams();
 
   console.log(name.name);
@@ -22,6 +22,8 @@ const DonorApplicationPaymentTableRow = () => {
       setIsLoading(false);
       if (response.apiSuccess) {
         const apiSuccess = response.apiSuccess as any;
+        console.log(apiSuccess?.data?.data);
+
         setPaymentData(apiSuccess?.data?.data);
         console.log(apiSuccess?.data?.data);
         setIsLoading(false);
@@ -82,33 +84,40 @@ const DonorApplicationPaymentTableRow = () => {
         ) : (
           <>
             <div className="py-4 pl-6 flex flex-row font-normal text-base">
-              <div className="flex-[2] flex items-center">
-                {getDateValue(paymentData?.created_at)}
-              </div>
-              <div className="flex-[2] flex items-center ">
-                {paymentData?.package?.name}
-              </div>
-              <div className="flex-[2] flex items-center ">
-                {paymentData?.user?.email}
-              </div>
-              <div className="flex-[2] flex items-center ">
-                {paymentData?.type}
-              </div>
-              <div className="flex-[2] flex items-center font-medium  ">
-                AED {paymentData?.amount}
-              </div>
-              <div className="flex-[2] flex items-center  gap-2 ">
-                <span>{paymentData?.status === "PENDING" && "Pending"}</span>
-              </div>
-              <div className="flex-[2.4] flex items-center  gap-2 ">
-                <Button
-                  placeholder={""}
-                  onClick={handleButtonClick}
-                  className="payment-request-button text-black-500 text-sm font-normal max-h-[30px] flex items-center text-center capitalize"
-                >
-                  Payment Request
-                </Button>
-              </div>
+              {paymentData.length > 0 &&
+                paymentData.map((data) => (
+                  <>
+                    <div className="flex-[2] flex items-center">
+                      {getDateValue(paymentData?.created_at)}
+                    </div>
+                    <div className="flex-[2] flex items-center ">
+                      {paymentData?.package?.name}
+                    </div>
+                    <div className="flex-[2] flex items-center ">
+                      {paymentData?.user?.email}
+                    </div>
+                    <div className="flex-[2] flex items-center ">
+                      {paymentData?.type}
+                    </div>
+                    <div className="flex-[2] flex items-center font-medium  ">
+                      AED {paymentData?.amount}
+                    </div>
+                    <div className="flex-[2] flex items-center  gap-2 ">
+                      <span>
+                        {paymentData?.status === "PENDING" && "Pending"}
+                      </span>
+                    </div>
+                    <div className="flex-[2.4] flex items-center  gap-2 ">
+                      <Button
+                        placeholder={""}
+                        onClick={handleButtonClick}
+                        className="payment-request-button text-black-500 text-sm font-normal max-h-[30px] flex items-center text-center capitalize"
+                      >
+                        Payment Request
+                      </Button>
+                    </div>
+                  </>
+                ))}
             </div>
           </>
         )}
