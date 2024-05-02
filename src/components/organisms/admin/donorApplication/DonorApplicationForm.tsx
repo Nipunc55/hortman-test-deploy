@@ -19,8 +19,19 @@ import LoaderIconSvg from "../../../../assets/svg/loaderIcon";
 import { getDonorApplicationById } from "../../../../api/donor_application";
 import { getLocationByApplicationId } from "../../../../api/location";
 import { getSubmissionByApplicationIdAndQuestionId } from "../../../../api/submission";
+import { UploadImageView } from "../../../atoms/donor/uploadImageView";
 
 const DonorApplicationReportForm = ({ onTabChange }: { onTabChange: any }) => {
+  const [fatherPassportIds, setFatherPassportIds] = useState({
+    passportFirstPage: "",
+    emiratesIdFront: "",
+    emiratesIdBack: ""
+  });
+  const [motherPassportIds, setMotherPassportIds] = useState({
+    passportFirstPage: "",
+    emiratesIdFront: "",
+    emiratesIdBack: ""
+  });
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState(null);
@@ -88,6 +99,7 @@ const DonorApplicationReportForm = ({ onTabChange }: { onTabChange: any }) => {
       await getPersonalDetailByApplicationId(name, "Father");
 
     if (apiSuccess && apiSuccess.status === 200) {
+      setFatherPassportIds({ ...apiSuccess?.data?.data });
       console.log(apiSuccess?.data?.data);
       setEmailFather(apiSuccess?.data?.data?.email);
       setFullNameFather(apiSuccess?.data?.data?.fullName);
@@ -123,6 +135,7 @@ const DonorApplicationReportForm = ({ onTabChange }: { onTabChange: any }) => {
 
     if (apiSuccess && apiSuccess.status === 200) {
       // console.log(apiSuccess?.data?.data);
+      setMotherPassportIds({ ...apiSuccess?.data?.data });
       setAlternatenumber(apiSuccess?.data?.data?.alternatePhoneNum);
       setEmail(apiSuccess?.data?.data?.email);
       setFullName(apiSuccess?.data?.data?.fullName);
@@ -452,7 +465,13 @@ const DonorApplicationReportForm = ({ onTabChange }: { onTabChange: any }) => {
                 }`}
               ></div>
             </div>
+            <UploadImageView
+              passportFirstPage={motherPassportIds?.passportFirstPage}
+              emiratedIDFront={motherPassportIds?.emiratesIdFront}
+              emiratedIDBack={motherPassportIds?.emiratesIdBack}
+            />
           </div>
+
           <div className="w-full flex pt-7 flex-col border-b border-secondary pb-10">
             <div className="flex flex-col px-5">
               <div className="text-black-500 text-lg font-medium mb-4">
@@ -703,6 +722,12 @@ const DonorApplicationReportForm = ({ onTabChange }: { onTabChange: any }) => {
                   }`}
                 ></div>
               </div>
+
+              <UploadImageView
+                passportFirstPage={fatherPassportIds?.passportFirstPage}
+                emiratedIDFront={fatherPassportIds?.emiratesIdFront}
+                emiratedIDBack={fatherPassportIds?.emiratesIdBack}
+              />
             </div>
           </div>
           <div className="w-full flex flex-col border-b border-secondary py-7">

@@ -123,7 +123,7 @@ const NotificationsModal = ({
               <ModalRow data={notificationsAdminData} />
             </div>
           )}
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center pt-2 items-center">
             <Button
               onClick={handleClick}
               placeholder={""}

@@ -37,8 +37,9 @@ const PaymentTableRow = ({ data }: { data: any }) => {
                 <div className="flex-[3] flex items-center">
                   {item?.user?.name ?? ""}
                 </div>
-                <div className="flex-[2] flex items-center">
-                  {item?.type ?? ""}
+                <div className="flex-[2] flex items-center capitalize">
+                  {/* {item?.type ?? ""} */}
+                  {item?.type?.toLowerCase()}
                 </div>
                 <div className="flex-[2] flex items-center gap-2">
                   {/* <span></span> */}

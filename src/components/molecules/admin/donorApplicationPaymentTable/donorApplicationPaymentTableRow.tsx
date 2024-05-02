@@ -92,11 +92,12 @@ const DonorApplicationPaymentTableRow = () => {
                   <div className="flex-[2] flex items-center ">
                     {data?.package?.name}
                   </div>
-                  <div className="flex-[2] flex items-center ">
+                  <div className="flex-[2] flex items-center truncate  ">
                     {data?.user?.email}
                   </div>
-                  <div className="flex-[2] flex items-center ">
-                    {data?.type}
+                  <div className="flex-[2] flex items-center capitalize ml-3">
+                    {/* {data?.type} */}
+                    {data?.type?.toLowerCase()}
                   </div>
                   <div className="flex-[2] flex items-center font-medium  ">
                     {t("$")}

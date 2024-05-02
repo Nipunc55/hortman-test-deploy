@@ -26,6 +26,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { v4 } from "uuid";
 import { ToastContainer, toast } from "react-toastify";
 import { fatherDetailsSchema } from "../../../../../utils/validations";
+import { UploadImageView } from "../../../../atoms/donor/uploadImageView";
 
 interface FatherDetailsFormTypes {
   fullName: string;
@@ -676,6 +677,11 @@ const FatherDetails = ({ setStep }: { setStep: (step: number) => void }) => {
             />
           </div>
         </div>
+        <UploadImageView
+          passportFirstPage={passportFirstPage}
+          emiratedIDFront={emiratedIDFront}
+          emiratedIDBack={emiratedIDBack}
+        />
       </div>
       <div className="flex items-center px-12 py-1">
         <Checkbox

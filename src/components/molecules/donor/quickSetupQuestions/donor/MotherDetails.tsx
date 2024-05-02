@@ -24,6 +24,7 @@ import {
   getPersonalDetailByApplicationId,
   updatePersonalDetails
 } from "../../../../../api/personal_detail";
+import { UploadImageView } from "../../../../atoms/donor/uploadImageView";
 // import { string } from "yup";
 // import LoaderIconSvg from "../../../../../assets/svg/loaderIcon";
 
@@ -700,6 +701,11 @@ const MotherDetails = ({ setStep }: { setStep: (step: number) => void }) => {
             />
           </div>
         </div>
+        <UploadImageView
+          passportFirstPage={passportFirstPage}
+          emiratedIDFront={emiratedIDFront}
+          emiratedIDBack={emiratedIDBack}
+        />
       </div>
 
       <div className="flex items-center justify-end p-5 px-5">
