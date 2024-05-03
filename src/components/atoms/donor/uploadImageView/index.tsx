@@ -24,28 +24,16 @@ export function UploadImageView({
             Uploaded Documents
           </div>
           {passportFirstPage && typeof passportFirstPage === "string" && (
-            <div className="border-b-[1px] border-b-secondary mb-2 ">
-              <div className="flex justify-between items-center pt-2 ">
-                <div>Passport (First page)</div>
-                <a
-                  href={passportFirstPage}
-                  download="image.jpg"
-                  target="_blank"
-                >
-                  <DownloadIcon />
-                </a>
-              </div>
-            </div>
+            <ImageRow
+              idImage={passportFirstPage}
+              name={"Passport (First page)"}
+            />
           )}
           {emiratedIDFront && typeof emiratedIDFront === "string" && (
-            <div className="border-b-[1px] border-b-secondary mb-2 ">
-              <div className="flex justify-between items-center pt-2">
-                <div>Emirates ID (Front side)</div>
-                <a href={emiratedIDFront} download="image.jpg" target="_blank">
-                  <DownloadIcon />
-                </a>
-              </div>
-            </div>
+            <ImageRow
+              idImage={emiratedIDFront}
+              name={"Emirates ID (Front side)"}
+            />
           )}
           {emiratedIDBack && typeof emiratedIDBack === "string" && (
             <ImageRow
