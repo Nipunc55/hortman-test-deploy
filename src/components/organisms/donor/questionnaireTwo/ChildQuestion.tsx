@@ -768,14 +768,14 @@ const ChildQuestion = ({
                   }
                   onChange={handleDateChange}
                   dateFormat="dd/MM/yyyy"
-                  onBlur={openDatePicker}
+                  // onBlur={openDatePicker}
                   placeholderText="DD/MM/YYYY"
                   className="w-full h-10 px-3 mt-1 rounded-md outline-none"
                   wrapperClassName="full-width-datepicker-wrapper gold-gradient-input-border"
                 />
                 <div
                   onClick={openDatePicker}
-                  onBlur={openDatePicker}
+                  // onBlur={openDatePicker}
                   className="absolute top-2 right-2.5 cursor-pointer"
                 >
                   <DateIcon />

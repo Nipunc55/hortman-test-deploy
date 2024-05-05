@@ -121,7 +121,7 @@ const DonorApplicationReportTableHeader = ({
             />
             <div
               onClick={openDatePicker}
-              onBlur={openDatePicker}
+              // onBlur={openDatePicker}
               className="absolute top-2 right-2.5 cursor-pointer"
             >
               <DateIcon />

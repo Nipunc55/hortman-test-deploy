@@ -7,8 +7,8 @@ export const submitNofications = async (
   notificationType: string,
   receiver: string,
   language: string = "en",
-  _reviewedBy?: string,
-  application?: string
+  application?: string,
+  _reviewedBy?: string
 ) => {
   let apiSuccess = null;
   let apiError = null;
@@ -89,7 +89,7 @@ export const getNotificationsById = async (id: string, receiver: string) => {
   let apiError = null;
   await axiosInstance
     .get(
-      `/notifications?filter[application]=${id}&filter[receiver]=${receiver}&filter[notification_type]=ne(Eligibility Review)`
+      `/notifications?filter[application]=${id}&filter[receiver]=${receiver}&filter[notification_type]=Custom Notification`
     )
     .then(function (response) {
       apiSuccess = response;
@@ -141,17 +141,20 @@ export const pushNofications = async (
   notificationType: string,
   receiver: string,
   language: string = "en",
-  _reviewedBy?: string
+  _reviewedBy?: string,
+  application?: string
 ) => {
   let apiSuccess = null;
   let apiError = null;
+
   await axiosInstance
     .post(`/notifications/push`, {
       title,
       body,
       notification_type: notificationType,
       receiver,
-      language
+      language,
+      application
     })
     .then(function (response) {
       apiSuccess = response;

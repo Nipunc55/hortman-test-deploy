@@ -22,10 +22,10 @@ const DonorApplicationTableRow = ({ data }: { data: any }) => {
   const selectedID = useRef<string>("");
   const selectedApplicationId = useRef<string>("");
 
-  const handleButtonClick = (item: string) => {
+  const handleButtonClick = (item: string, applicationId: string) => {
     // setSelectedID(item);
     selectedID.current = item;
-
+    selectedApplicationId.current = applicationId;
     setIsNotificationModalOpen(true);
   };
 
@@ -51,7 +51,6 @@ const DonorApplicationTableRow = ({ data }: { data: any }) => {
     return inputDate.toLocaleDateString("en-US", options);
   };
 
-  console.log(data);
   return (
     <div className="mb-5">
       {data?.length > 0 ? (
@@ -108,7 +107,9 @@ const DonorApplicationTableRow = ({ data }: { data: any }) => {
                     <hr className="border border-grey-170 w-full" />
                     <MenuItem
                       placeholder={""}
-                      onClick={() => handleButtonClick(item?.user?._id)}
+                      onClick={() =>
+                        handleButtonClick(item?.user?._id, item?._id)
+                      }
                       className="text-base text-black font-normal text-left"
                     >
                       <span className="px-1 !text-black-500">
@@ -154,6 +155,7 @@ const DonorApplicationTableRow = ({ data }: { data: any }) => {
         receiverId={selectedID.current}
         open={isNotificationModalOpen}
         handleOpen={setIsNotificationModalOpen}
+        applicationID={selectedApplicationId.current}
       />
     </div>
   );

@@ -576,6 +576,9 @@ const FatherDetails = ({ setStep }: { setStep: (step: number) => void }) => {
               wrapperClassName="full-width-datepicker-wrapper gold-gradient-input-border"
               onKeyDown={(e) => e.preventDefault()}
               maxDate={new Date()}
+              peekNextMonth
+              showMonthDropdown
+              dropdownMode="select"
             />
           </div>
         </div>

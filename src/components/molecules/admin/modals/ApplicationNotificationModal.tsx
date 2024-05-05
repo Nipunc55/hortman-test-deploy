@@ -52,6 +52,7 @@ const ApplicationNotificationModal = ({
         values.body,
         values.notificationType,
         values.receiver,
+        "en",
         values.application
       );
 

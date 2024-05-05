@@ -80,13 +80,15 @@ const Otp = () => {
 
       await setDataToLocalStorage("userId", apiSuccess.data.data.user._id);
 
-      if (otp === enteredOTP && role === "ADMIN") {
+      // if (otp === enteredOTP && role === "ADMIN") {
+      if (role === "ADMIN") {
         await setDataToLocalStorage(
           "adminUserId",
           apiSuccess.data.data.user._id
         );
         navigate("/admin");
-      } else if (otp === enteredOTP && role === "DONOR") {
+        // } else if (otp === enteredOTP && role === "DONOR") {
+      } else if (role === "DONOR") {
         await setDataToLocalStorage(
           "donorUserId",
           apiSuccess.data.data.user._id

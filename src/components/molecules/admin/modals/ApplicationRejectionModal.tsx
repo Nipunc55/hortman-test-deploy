@@ -91,8 +91,8 @@ const ApplicationRejectionModal = ({
             values.notificationType,
             values.user,
             values.language,
-            values.reviewedby
-            // values.application
+            values.reviewedby,
+            values.application
           );
         handleOpen(false);
       } else if (apiError) {

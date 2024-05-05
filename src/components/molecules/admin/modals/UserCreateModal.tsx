@@ -59,7 +59,7 @@ const UserCreateModal = ({ open, handleOpen }: UserCreateModalModalProps) => {
       const { apiSuccess, apiError }: any = await addUser(
         values.fullName,
         values.email,
-        "+971" + values.mobileNumber,
+        countryCallingCode + values.mobileNumber,
         values.role,
         values.status
       );
@@ -196,8 +196,8 @@ const UserCreateModal = ({ open, handleOpen }: UserCreateModalModalProps) => {
                     color="blue-gray"
                     className="flex h-10 w-[100px] text-sm px-2 items-center gap-1 rounded-r-none bg-white/10 outline-none text-black font-normal"
                   >
-                    +971
-                    {/* {countryCallingCode} */}
+                    {/* +971 */}
+                    {countryCallingCode}
                     <DropDownArrow />
                   </Button>
                 </MenuHandler>
@@ -206,9 +206,10 @@ const UserCreateModal = ({ open, handleOpen }: UserCreateModalModalProps) => {
                   placeholder={""}
                 >
                   {countries
-                    .filter(
-                      (country: any) => country.countryCallingCode === "+971"
-                    )
+                    .sort()
+                    // .filter(
+                    //   (country: any) => country.countryCallingCode === "+971"
+                    // )
                     .map(
                       (
                         { name, flags, countryCallingCode }: any,

@@ -135,14 +135,14 @@ const DonorApplicationTableHeader = ({
               selected={fromDate}
               onChange={handleDateChangeFrom}
               dateFormat="dd/MM/yyyy"
-              onBlur={openDatePickerFrom}
+              // onBlur={openDatePickerFrom}
               placeholderText="DD/MM/YYYY"
               className="w-full h-10 px-3 mt-1 rounded-md outline-none"
               wrapperClassName="full-width-datepicker-wrapper gold-gradient-input-border"
             />
             <div
               onClick={openDatePickerFrom}
-              onBlur={openDatePickerFrom}
+              // onBlur={openDatePickerFrom}
               className="absolute top-2 right-2.5 cursor-pointer"
             >
               <DateIcon />

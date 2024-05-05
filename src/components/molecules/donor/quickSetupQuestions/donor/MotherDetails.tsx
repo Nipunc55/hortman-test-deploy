@@ -592,12 +592,26 @@ const MotherDetails = ({ setStep }: { setStep: (step: number) => void }) => {
                 onSelect={() => {
                   closeDatePicker();
                 }}
+                peekNextMonth
+                showMonthDropdown
                 showYearDropdown
+                dropdownMode="select"
                 placeholderText="DD/MM/YYYY"
                 className="w-full h-10 px-3 mt-1 rounded-md outline-none"
                 wrapperClassName="full-width-datepicker-wrapper gold-gradient-input-border"
-                onKeyDown={(e) => e.preventDefault()}
+                // onKeyDown={(e) => e.preventDefault()}
               />
+              {/* <DatePicker
+                selected={values.dob}
+                onChange={dateOfBirthHandler}
+                peekNextMonth
+                showMonthDropdown
+                showYearDropdown
+                dropdownMode="select"
+                className="w-full h-10 px-3 mt-1 rounded-md outline-none"
+                wrapperClassName="full-width-datepicker-wrapper gold-gradient-input-border"
+                placeholderText="DD/MM/YYYY"
+              /> */}
             </div>
           </div>
         </div>

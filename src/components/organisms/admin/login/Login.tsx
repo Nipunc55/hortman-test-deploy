@@ -44,6 +44,8 @@ const Login = () => {
     useState<boolean>(false);
   const { t } = useTranslation();
   useEffect(() => {
+    console.log(countries);
+
     localStorage.clear();
   }, []);
   const data = [
@@ -161,26 +163,32 @@ const Login = () => {
             </MenuHandler>
             <MenuList className="max-h-[20rem] w-[350px]" placeholder={""}>
               {countries
-                .filter((country: any) => country.countryCallingCode === "+971")
-                .map(({ name, flags, countryCallingCode }: any) => {
-                  return (
-                    <MenuItem
-                      placeholder={""}
-                      key={name}
-                      value={name}
-                      className="flex items-center gap-2"
-                      onClick={() => setCountry(40)}
-                    >
-                      <img
-                        src={flags.svg}
-                        alt={name}
-                        className="h-5 w-5 rounded-full object-cover"
-                      />
-                      {name}{" "}
-                      <span className="ml-auto">{countryCallingCode}</span>
-                    </MenuItem>
-                  );
-                })}
+                .sort()
+                // .filter((country: any) => country.countryCallingCode === "+971")
+                .map(
+                  (
+                    { name, flags, countryCallingCode, country }: any,
+                    index
+                  ) => {
+                    return (
+                      <MenuItem
+                        placeholder={""}
+                        key={name}
+                        value={name}
+                        className="flex items-center gap-2"
+                        onClick={() => setCountry(index)}
+                      >
+                        <img
+                          src={flags.svg}
+                          alt={name}
+                          className="h-5 w-5 rounded-full object-cover"
+                        />
+                        {name}{" "}
+                        <span className="ml-auto">{countryCallingCode}</span>
+                      </MenuItem>
+                    );
+                  }
+                )}
             </MenuList>
           </Menu>
 
@@ -196,7 +204,8 @@ const Login = () => {
             }}
             onChange={(e: any) => {
               const formattedNumber = e.target.value.replace(/[^\d]/g, "");
-              const phoneNumberWithCountryCode = "+971" + formattedNumber;
+              const phoneNumberWithCountryCode =
+                countryCallingCode + formattedNumber;
               setPhoneNumber(phoneNumberWithCountryCode);
             }}
             onKeyPress={(event) => {

@@ -353,9 +353,9 @@ const DonorApplicationReportForm = ({ onTabChange }: { onTabChange: any }) => {
                       handleDateChange(e, "MOTHER");
                     }}
                     dateFormat="dd/MM/yyyy"
-                    onBlur={() => {
-                      openDatePicker("MOTHER");
-                    }}
+                    // onBlur={() => {
+                    //   openDatePicker("MOTHER");
+                    // }}
                     disabled={true}
                     placeholderText="DD/MM/YYYY"
                     className="w-full h-10 px-3 mt-1 rounded-l-md outline-none"
@@ -612,9 +612,9 @@ const DonorApplicationReportForm = ({ onTabChange }: { onTabChange: any }) => {
                         handleDateChange(e, "FATHER");
                       }}
                       dateFormat="dd/MM/yyyy"
-                      onBlur={() => {
-                        openDatePicker("FATHER");
-                      }}
+                      // onBlur={() => {
+                      //   openDatePicker("FATHER");
+                      // }}
                       disabled={true}
                       placeholderText="DD/MM/YYYY"
                       className="w-full h-10 px-3 mt-1 rounded-l-md outline-none"
@@ -847,9 +847,9 @@ const DonorApplicationReportForm = ({ onTabChange }: { onTabChange: any }) => {
                           handleDateChange(e, "MOTHER");
                         }}
                         dateFormat="dd/MM/yyyy"
-                        onBlur={() => {
-                          openDatePicker("MOTHER");
-                        }}
+                        // onBlur={() => {
+                        //   openDatePicker("MOTHER");
+                        // }}
                         disabled={true}
                         placeholderText="DD/MM/YYYY"
                         className="w-full h-10 px-3 mt-1 rounded-l-md outline-none"
