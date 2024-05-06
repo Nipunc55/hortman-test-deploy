@@ -38,7 +38,6 @@ const QuestionView = ({
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState("");
-  console.log(question);
 
   return (
     <>

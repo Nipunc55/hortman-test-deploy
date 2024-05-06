@@ -94,7 +94,7 @@ const QuestionContainerTwo = () => {
       let updatedQuestion: any = questions[currentQuestionIndex];
 
       if (answerData && answerData.length > 0) {
-        setIsEdit(true);
+        // setIsEdit(true);
 
         answerData.forEach((ans: any, index: number) => {
           if (

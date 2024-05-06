@@ -35,21 +35,20 @@ const QuestionItemModalBody = ({
   // setIsNextButtonVisible?: (value: boolean) => void;
   question: any;
 }) => {
-  const questions: QuestionType[] = useSelector(
-    (state: RootState) => state.questionsReducer.questions
-  );
+  // const questions: QuestionType[] = useSelector(
+  //   (state: RootState) => state.questionsReducer.questions
+  // );
   // const [question, setQuestion] = useState({});
   const dispatch = useDispatch();
   const [locale, setLocale] = useState(i18n.language);
   const [answers, setAnswers] = useState(question?.answer || [""]);
   const isArabic = locale === "ar";
   useEffect(() => {
-    console.log(questions);
-
     // setQuestion(questions[questionIndex]);
     const updateLocale = () => {
       setLocale(i18n.language);
     };
+    console.log(question);
 
     i18n.on("languageChanged", updateLocale);
     getQuestionSubmission();
@@ -365,9 +364,9 @@ const QuestionItemModalBody = ({
                       }`}
                     >
                       <Checkbox
-                        // defaultChecked={question.answer.includes(
-                        //   option.optionTitle
-                        // )}
+                        defaultChecked={question.answer.includes(
+                          option.optionTitle
+                        )}
                         // defaultChecked={true}
                         checked={answers.includes(option.optionTitle)}
                         key={`${question.id}-${index}`}
@@ -376,7 +375,7 @@ const QuestionItemModalBody = ({
                         //     ? "checked"
                         //     : "unchecked"
                         // }
-                        // value={answers.includes(option.optionTitle)}
+                        value={answers.includes(option.optionTitle)}
                         className={`h-[22px] w-6 rounded-md checked:bg-white border-[3px] border-primary checked:border-primary`}
                         color="gray"
                         // onChange={(e) => {
