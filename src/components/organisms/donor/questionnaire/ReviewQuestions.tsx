@@ -208,19 +208,8 @@ const ReviewQuestions = ({
                 setIsError(false);
               }, 3000);
             } else {
-              if (navigateTo === "/quick-setup/questionnaire-2") {
-                const currentDate = dayjs().format("MMMM DD, YYYY");
-                const donorApplicationId: string =
-                  (await getDataFromLocalStorage("donorApplicationId")) ?? "";
-                const { apiError: updateAppApiError }: any =
-                  await updateApplicationStatusByUser(
-                    { type: "medical_questionnaire", date: currentDate },
-                    donorApplicationId
-                  );
-                if (updateAppApiError) {
-                  // alert(updateAppApiError.response.data.message);
-                }
-              }
+              // if (navigateTo === "/donor") {
+              // }
               navigate(navigateTo);
             }
           }}

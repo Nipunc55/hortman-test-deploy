@@ -2,14 +2,33 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@material-tailwind/react";
 import { t } from "i18next";
 import CongratsIcon from "../../../../assets/svg/congratsIcon";
+import { getDataFromLocalStorage } from "../../../../utils/common/accessLocalStorage";
+import { updateApplicationStatusByUser } from "../../../../api/donor";
+import dayjs from "dayjs";
 
 const CongratsTable = () => {
   const navigate = useNavigate();
   const handleSubmit = () => {
     navigate("/donor/educational-material");
   };
+  const markApplicationStatus = async () => {
+    const currentDate = dayjs().format("MMMM DD, YYYY");
+    const donorApplicationId: string =
+      (await getDataFromLocalStorage("donorApplicationId")) ?? "";
+    const { apiError: updateAppApiError }: any =
+      await updateApplicationStatusByUser(
+        { type: "medical_questionnaire", date: currentDate },
+        donorApplicationId
+      );
+    if (updateAppApiError) {
+      console.log(updateAppApiError);
+
+      // alert(updateAppApiError.response.data.message);
+    }
+  };
 
   const handleSubmitHome = () => {
+    void markApplicationStatus();
     navigate("/donor");
   };
   return (
