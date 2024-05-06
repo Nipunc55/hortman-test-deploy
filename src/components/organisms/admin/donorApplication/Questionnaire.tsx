@@ -9,6 +9,7 @@ import {
   ELIGIBILITYASSESSMENT,
   INPUT_TYPE_CHECKBOX,
   INPUT_TYPE_DATE,
+  INPUT_TYPE_MULTIPLE_CHECKBOX,
   INPUT_TYPE_TEXT,
   INPUT_TYPE_YESANDNO,
   QUESTIONNAIRE_ONE,
@@ -91,7 +92,8 @@ const Questionnaire = ({ onTabChange }: { onTabChange: any }) => {
 
     if (apiSuccess && apiSuccess.status === 200) {
       setIsTwoLoading(false);
-      updateQuestionnaireAnswers(apiSuccess.data.data, QUESTIONNAIRE_TWO);
+
+      updateQuestionnaireAnswers(apiSuccess?.data?.data, QUESTIONNAIRE_TWO);
     } else if (apiError) {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       setMessage(apiError.response.data.message);
@@ -102,18 +104,18 @@ const Questionnaire = ({ onTabChange }: { onTabChange: any }) => {
       }, 3000);
     }
   };
-
   const updateQuestionnaireAnswers = (
     reviewData: any,
     questionnaireType: string
   ) => {
+    // const updatedQuestions: any = [...questions];
+    // let updatedAnswers: any = [];
     let updatedQuestions: any;
     if (questionnaireType === QUESTIONNAIRE_ONE) {
       updatedQuestions = [...questions];
     } else if (questionnaireType === QUESTIONNAIRE_TWO) {
       updatedQuestions = [...questionsTwo];
     }
-
     let updatedAnswers: any = [];
 
     updatedQuestions.forEach((questionItem: any, questionItemIndex: number) => {
@@ -123,6 +125,7 @@ const Questionnaire = ({ onTabChange }: { onTabChange: any }) => {
       updatedAnswers = [...updatedAnswers, questionAnswer];
 
       if (questionAnswer?.answers && questionAnswer.answers?.length > 0) {
+        console.log(questionAnswer);
         questionAnswer.answers.forEach(
           (questionAnswerItem: any, index: number) => {
             if (index === 0) {
@@ -135,6 +138,7 @@ const Questionnaire = ({ onTabChange }: { onTabChange: any }) => {
               ) {
                 answerObj = [...questionAnswerItem.answer];
               }
+              console.log(answerObj);
 
               updatedQuestions[questionItemIndex] = {
                 ...questionItem,
@@ -143,9 +147,45 @@ const Questionnaire = ({ onTabChange }: { onTabChange: any }) => {
               };
             } else {
               if (
+                questionAnswerItem.answerType === INPUT_TYPE_MULTIPLE_CHECKBOX
+              ) {
+                console.log(questionItem);
+
+                const optionObj: any =
+                  questionItem.yesQuestions[0].options.find(
+                    (_option: any, index: number) =>
+                      index === questionAnswerItem.index
+                  );
+
+                if (optionObj) {
+                  const ansObj = {
+                    options: [...questionAnswerItem.answer],
+                    title: optionObj.title ?? optionObj.optionTitle,
+                    type: optionObj.type
+                  };
+
+                  updatedQuestions[questionItemIndex] = {
+                    ...updatedQuestions[questionItemIndex],
+                    yesQuestions: [
+                      {
+                        ...updatedQuestions[questionItemIndex].yesQuestions[0],
+                        answer: [
+                          ...updatedQuestions[questionItemIndex].yesQuestions[0]
+                            .answer,
+                          ansObj
+                        ]
+                      }
+                    ]
+                  };
+                }
+              }
+
+              if (
                 questionAnswerItem.answerType === INPUT_TYPE_DATE ||
                 questionAnswerItem.answerType === INPUT_TYPE_TEXT ||
-                questionAnswerItem.answerType === INPUT_TYPE_YESANDNO
+                questionAnswerItem.answerType === INPUT_TYPE_YESANDNO ||
+                questionAnswerItem.answerType === INPUT_TYPE_CHECKBOX
+                // questionAnswerItem.answerType === INPUT_TYPE_MULTIPLE_CHECKBOX
               ) {
                 if (
                   questionItem?.yesQuestions &&
@@ -162,10 +202,17 @@ const Questionnaire = ({ onTabChange }: { onTabChange: any }) => {
                     )
                   ];
 
-                  yesQuestion = {
-                    ...yesQuestion,
-                    answer: questionAnswerItem.answer[0]
-                  };
+                  if (questionAnswerItem.answerType === INPUT_TYPE_CHECKBOX) {
+                    yesQuestion = {
+                      ...yesQuestion,
+                      answer: questionAnswerItem.answer
+                    };
+                  } else {
+                    yesQuestion = {
+                      ...yesQuestion,
+                      answer: questionAnswerItem.answer[0]
+                    };
+                  }
 
                   updatedYesQuestion = [...updatedYesQuestion, yesQuestion];
 
@@ -184,11 +231,98 @@ const Questionnaire = ({ onTabChange }: { onTabChange: any }) => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       if (questionnaireType === QUESTIONNAIRE_ONE) {
         dispatch(updateQuestions(updatedQuestions[questionItemIndex]));
-      } else if (questionnaireType === QUESTIONNAIRE_TWO) {
+      } else {
         dispatch(updateQuestionsTwo(updatedQuestions[questionItemIndex]));
       }
     });
   };
+  // const updateQuestionnaireAnswers = (
+  //   reviewData: any,
+  //   questionnaireType: string
+  // ) => {
+  //   let updatedQuestions: any;
+  //   if (questionnaireType === QUESTIONNAIRE_ONE) {
+  //     updatedQuestions = [...questions];
+  //   } else if (questionnaireType === QUESTIONNAIRE_TWO) {
+  //     updatedQuestions = [...questionsTwo];
+  //   }
+
+  //   let updatedAnswers: any = [];
+
+  //   updatedQuestions.forEach((questionItem: any, questionItemIndex: number) => {
+  //     const questionAnswer = reviewData.find((element: any) => {
+  //       return element.index === questionItem.id;
+  //     });
+  //     updatedAnswers = [...updatedAnswers, questionAnswer];
+
+  //     if (questionAnswer?.answers && questionAnswer.answers?.length > 0) {
+  //       questionAnswer.answers.forEach(
+  //         (questionAnswerItem: any, index: number) => {
+  //           if (index === 0) {
+  //             let answerObj;
+
+  //             if (questionAnswerItem.answerType === INPUT_TYPE_YESANDNO) {
+  //               answerObj = questionAnswerItem.answer[0];
+  //             } else if (
+  //               questionAnswerItem.answerType === INPUT_TYPE_CHECKBOX
+  //             ) {
+  //               answerObj = [...questionAnswerItem.answer];
+  //             }
+
+  //             updatedQuestions[questionItemIndex] = {
+  //               ...questionItem,
+  //               isYesSelected: answerObj === "YES" ? true : null,
+  //               answer: answerObj
+  //             };
+  //           } else {
+  //             if (
+  //               questionAnswerItem.answerType === INPUT_TYPE_DATE ||
+  //               questionAnswerItem.answerType === INPUT_TYPE_TEXT ||
+  //               questionAnswerItem.answerType === INPUT_TYPE_YESANDNO
+  //             ) {
+  //               if (
+  //                 questionItem?.yesQuestions &&
+  //                 questionAnswerItem?.index - 2 <=
+  //                   questionItem.yesQuestions.length
+  //               ) {
+  //                 let yesQuestion = {
+  //                   ...questionItem.yesQuestions[questionAnswerItem?.index - 2]
+  //                 };
+
+  //                 let updatedYesQuestion = [
+  //                   ...questionItem.yesQuestions.filter(
+  //                     (ques: any) => ques.question !== yesQuestion.question
+  //                   )
+  //                 ];
+
+  //                 yesQuestion = {
+  //                   ...yesQuestion,
+  //                   answer: questionAnswerItem.answer[0]
+  //                 };
+
+  //                 updatedYesQuestion = [...updatedYesQuestion, yesQuestion];
+
+  //                 updatedQuestions[questionItemIndex] = {
+  //                   ...questionItem,
+  //                   answer: "YES",
+  //                   isYesSelected: true,
+  //                   yesQuestions: [...updatedYesQuestion]
+  //                 };
+  //               }
+  //             }
+  //           }
+  //         }
+  //       );
+  //     }
+  //     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+  //     if (questionnaireType === QUESTIONNAIRE_ONE) {
+  //       dispatch(updateQuestions(updatedQuestions[questionItemIndex]));
+  //     } else if (questionnaireType === QUESTIONNAIRE_TWO) {
+  //       // console.log(updatedQuestions);
+  //       dispatch(updateQuestionsTwo(updatedQuestions[questionItemIndex]));
+  //     }
+  //   });
+  // };
 
   useEffect(() => {
     void getReviewData();

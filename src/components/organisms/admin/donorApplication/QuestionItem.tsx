@@ -45,10 +45,10 @@ const QuestionItemModalBody = ({
   const isArabic = locale === "ar";
   useEffect(() => {
     // setQuestion(questions[questionIndex]);
+    console.log("question", question);
     const updateLocale = () => {
       setLocale(i18n.language);
     };
-    console.log(question);
 
     i18n.on("languageChanged", updateLocale);
     getQuestionSubmission();
@@ -368,14 +368,14 @@ const QuestionItemModalBody = ({
                           option.optionTitle
                         )}
                         // defaultChecked={true}
-                        checked={answers.includes(option.optionTitle)}
+                        // checked={answers.includes(option.optionTitle)}
                         key={`${question.id}-${index}`}
-                        // value={
-                        //   answers.includes(option.optionTitle)
-                        //     ? "checked"
-                        //     : "unchecked"
-                        // }
-                        value={answers.includes(option.optionTitle)}
+                        value={
+                          answers.includes(option.optionTitle)
+                            ? "checked"
+                            : "unchecked"
+                        }
+                        // value={answers.includes(option.optionTitle)}
                         className={`h-[22px] w-6 rounded-md checked:bg-white border-[3px] border-primary checked:border-primary`}
                         color="gray"
                         // onChange={(e) => {

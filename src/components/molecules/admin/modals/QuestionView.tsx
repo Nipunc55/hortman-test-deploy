@@ -64,7 +64,7 @@ const QuestionView = ({
             </Alert>
           </div>
         )}
-        <DialogBody placeholder={""}>
+        <DialogBody className="overflow-y-auto max-h-96" placeholder={""}>
           <QuestionItemModalBody
             questionIndex={question?.id - 1}
             question={question}
@@ -78,3 +78,91 @@ const QuestionView = ({
 };
 
 export default QuestionView;
+
+// const updateQuestionnaireAnswers = (
+//   reviewData: any,
+//   questionnaireType: string
+// ) => {
+//   let updatedQuestions: any;
+//   if (questionnaireType === QUESTIONNAIRE_ONE) {
+//     updatedQuestions = [...questions];
+//   } else if (questionnaireType === QUESTIONNAIRE_TWO) {
+//     updatedQuestions = [...questionsTwo];
+//   }
+
+//   let updatedAnswers: any = [];
+
+//   updatedQuestions.forEach((questionItem: any, questionItemIndex: number) => {
+//     const questionAnswer = reviewData.find((element: any) => {
+//       return element.index === questionItem.id;
+//     });
+//     updatedAnswers = [...updatedAnswers, questionAnswer];
+
+//     if (questionAnswer?.answers && questionAnswer.answers?.length > 0) {
+//       questionAnswer.answers.forEach(
+//         (questionAnswerItem: any, index: number) => {
+//           if (index === 0) {
+//             let answerObj;
+
+//             if (questionAnswerItem.answerType === INPUT_TYPE_YESANDNO) {
+//               answerObj = questionAnswerItem.answer[0];
+//             } else if (
+//               questionAnswerItem.answerType === INPUT_TYPE_CHECKBOX
+//             ) {
+//               answerObj = [...questionAnswerItem.answer];
+//             }
+
+//             updatedQuestions[questionItemIndex] = {
+//               ...questionItem,
+//               isYesSelected: answerObj === "YES" ? true : null,
+//               answer: answerObj
+//             };
+//           } else {
+//             if (
+//               questionAnswerItem.answerType === INPUT_TYPE_DATE ||
+//               questionAnswerItem.answerType === INPUT_TYPE_TEXT ||
+//               questionAnswerItem.answerType === INPUT_TYPE_YESANDNO
+//             ) {
+//               if (
+//                 questionItem?.yesQuestions &&
+//                 questionAnswerItem?.index - 2 <=
+//                   questionItem.yesQuestions.length
+//               ) {
+//                 let yesQuestion = {
+//                   ...questionItem.yesQuestions[questionAnswerItem?.index - 2]
+//                 };
+
+//                 let updatedYesQuestion = [
+//                   ...questionItem.yesQuestions.filter(
+//                     (ques: any) => ques.question !== yesQuestion.question
+//                   )
+//                 ];
+
+//                 yesQuestion = {
+//                   ...yesQuestion,
+//                   answer: questionAnswerItem.answer[0]
+//                 };
+
+//                 updatedYesQuestion = [...updatedYesQuestion, yesQuestion];
+
+//                 updatedQuestions[questionItemIndex] = {
+//                   ...questionItem,
+//                   answer: "YES",
+//                   isYesSelected: true,
+//                   yesQuestions: [...updatedYesQuestion]
+//                 };
+//               }
+//             }
+//           }
+//         }
+//       );
+//     }
+//     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+//     if (questionnaireType === QUESTIONNAIRE_ONE) {
+//       dispatch(updateQuestions(updatedQuestions[questionItemIndex]));
+//     } else if (questionnaireType === QUESTIONNAIRE_TWO) {
+//       // console.log(updatedQuestions);
+//       dispatch(updateQuestionsTwo(updatedQuestions[questionItemIndex]));
+//     }
+//   });
+// };
