@@ -14,11 +14,17 @@ import {
   QUESTIONNAIRE_ONE,
   QUESTIONNAIRE_TWO
 } from "../../../../utils/constants/common";
-import { updateQuestions } from "../../../../redux/slices/Questions";
+import {
+  resetState,
+  updateQuestions
+} from "../../../../redux/slices/Questions";
 import ReviewQuestionItem from "../../donor/questionnaire/ReviewQuestionItem";
 import LoaderIconSvg from "../../../../assets/svg/loaderIcon";
 import { type QuestionTwoType } from "../../../../redux/types/QuestionsTwo";
-import { updateQuestionsTwo } from "../../../../redux/slices/QuestionsTwo";
+import {
+  resetStateTwo,
+  updateQuestionsTwo
+} from "../../../../redux/slices/QuestionsTwo";
 import BasicButton from "../../../atoms/admin/buttons/BasicButton";
 import { Alert } from "@material-tailwind/react";
 
@@ -33,10 +39,20 @@ const Questionnaire = ({ onTabChange }: { onTabChange: any }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isTwoLoading, setIsTwoLoading] = useState(false);
   const [message, setMessage] = useState("");
-  const [, setError] = useState(false);
+  const [err, setError] = useState(false);
   const dispatch = useDispatch();
   const { name } = useParams();
+  useEffect(() => {
+    // Dispatch reset actions when the component mounts
+    // dispatch(resetState());
+    // dispatch(resetStateTwo());
 
+    // Return a cleanup function to reset the states
+    return () => {
+      dispatch(resetState());
+      dispatch(resetStateTwo());
+    };
+  }, []);
   const getReviewData = async () => {
     setIsLoading(true);
     setIsError(false);

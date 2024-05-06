@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 // This is how you import a reducer, based on the prior export.
-import questionsReducer from "./slices/Questions";
-import questionsTwoReducer from "./slices/QuestionsTwo";
+import questionsReducer, { resetState } from "./slices/Questions";
+import questionsTwoReducer, { resetStateTwo } from "./slices/QuestionsTwo";
 import loginReducer from "./slices/login";
 import commonValuesReducer from "./slices/CommonValues";
 import quickSetupReducer from "./slices/QuickSetupGuideSlices";
@@ -13,7 +13,9 @@ const store = configureStore({
     questionsTwoReducer,
     loginReducer,
     commonValuesReducer,
-    quickSetupReducer
+    quickSetupReducer,
+    resetState,
+    resetStateTwo
   }
 });
 

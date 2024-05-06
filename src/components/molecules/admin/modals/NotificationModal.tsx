@@ -116,7 +116,9 @@ const NotificationsModal = ({ open, handleOpen }: NotificationsModalProps) => {
       // const id = apiSuccess?.data?.data?._id;
       // void formik.setFieldValue("receiver", id);
     } else if (apiError) {
-      alert(apiError.response.data.message);
+      console.log(apiError);
+
+      // alert(apiError.response.data.message);
     }
   };
 

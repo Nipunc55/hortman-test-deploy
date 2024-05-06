@@ -2539,11 +2539,14 @@ export const questionTwoSlice = createSlice({
   reducers: {
     updateQuestionsTwo: (state, action: PayloadAction<QuestionTwoType>) => {
       state.questionsTwo[action.payload.id - 1] = action.payload;
+    },
+    resetStateTwo: (state) => {
+      return initialState;
     }
   }
 });
 
 // Action creators are generated for each case reducer function
-export const { updateQuestionsTwo } = questionTwoSlice.actions;
+export const { updateQuestionsTwo, resetStateTwo } = questionTwoSlice.actions;
 // You must export the reducer as follows for it to be able to be read by the store.
 export default questionTwoSlice.reducer;

@@ -3,17 +3,21 @@ import { t } from "i18next";
 import i18n from "../../../../i18n";
 import { InputType } from "../../../../redux/types/Questions";
 import EditIcon from "../../../../assets/svg/editIcon";
+import QuestionView from "../../../molecules/admin/modals/QuestionView";
 
 const ReviewQuestionItem = ({
   setSelectedQuestionIndex,
   question,
-  setError
+  setError,
+  type
 }: {
   setSelectedQuestionIndex?: (value: number) => void;
   question: any;
   setError: (value: boolean) => void;
+  type: string;
 }) => {
   const [locale, setLocale] = useState(i18n.language);
+  const [modalOpen, setModalOpen] = useState(false);
   const isArabic = locale === "ar";
   useEffect(() => {
     // console.log(question);
@@ -124,10 +128,16 @@ const ReviewQuestionItem = ({
               if (setSelectedQuestionIndex) {
                 setSelectedQuestionIndex(question.id - 1);
               }
+              setModalOpen(true);
             }}
           >
             <EditIcon />
           </button>
+          <QuestionView
+            open={modalOpen}
+            handleOpen={setModalOpen}
+            question={question}
+          />
         </div>
       </div>
     </>
