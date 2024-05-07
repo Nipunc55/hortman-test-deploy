@@ -145,7 +145,7 @@ const KitDispatchModal = ({ handleClose }: { handleClose: () => void }) => {
     void renderDrivers();
     void getDonorApplication();
     i18n.on("languageChanged", updateLocale);
-
+    closeDatePicker();
     return () => {
       i18n.off("languageChanged", updateLocale);
     };

@@ -42,7 +42,6 @@ const ApplicationNotificationModal = ({
   const formik = useFormik({
     initialValues,
     onSubmit: async (values, e) => {
-      console.log(values);
       setIsLoading(true);
       setIsError(false);
       // void formik.setFieldValue("receiver", receiverId);
@@ -87,8 +86,6 @@ const ApplicationNotificationModal = ({
   const resetForm = (e: any) => {
     formik.handleReset(e);
   };
-
-  console.log(typeof receiverId);
 
   return (
     <Dialog

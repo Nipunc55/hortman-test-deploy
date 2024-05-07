@@ -71,8 +71,8 @@ const NotificationsModal = ({ open, handleOpen }: NotificationsModalProps) => {
         values.notificationType,
         values.receiver,
         values.language,
-        values.reviewedBy,
-        values.application
+        values.application,
+        values.reviewedBy
       );
 
       setIsLoading(false);
