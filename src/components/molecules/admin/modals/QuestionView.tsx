@@ -41,7 +41,7 @@ const QuestionView = ({
 
   return (
     <>
-      <Dialog open={open} size={"l"} handler={handleOpen} placeholder={""}>
+      <Dialog open={open} size={"lg"} handler={handleOpen} placeholder={""}>
         <DialogHeader placeholder={""}>
           <div className="w-full flex justify-between items-center">
             <div className="text-5xl text-textPrimary font-medium">
