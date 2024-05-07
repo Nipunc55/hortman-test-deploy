@@ -1,5 +1,5 @@
 import { Button, ButtonGroup, Tabs, TabsBody } from "@material-tailwind/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DonorDetails from "./DonorDetails";
 import Questionnaire from "./Questionnaire";
 import Payments from "./Payments";
@@ -23,6 +23,9 @@ import NotDoneIcon from "../../../../assets/svg/notDoneIcon";
 import EligibiltyAssessment from "./EligibiltyAssessment";
 import KitStatus from "./KitStatus";
 import UnitStatus from "./UnitStatus";
+import { useParams } from "react-router-dom";
+import { getApplicationStatusByAplicationId } from "../../../../api/kitStatus";
+import DoneIconSelected from "../../../../assets/svg/doneIconeSelected";
 
 const DonorApplicationContainer = () => {
   // const [isRejectionModalOpen, setIsRejectionModalOpen] =
@@ -30,10 +33,29 @@ const DonorApplicationContainer = () => {
   // const [isNotificationModalOpen, setIsNotificationModalOpen] =
   //   useState<boolean>(false);
   const [selectedTab, setselectedTab] = useState<string>(DONOR_DETAILS);
+  const { name } = useParams();
+  const [status, setStatus] = useState<any>({});
+  useEffect(() => {
+    void getApplicationStatus();
+  }, []);
+  const getApplicationStatus = async () => {
+    const { apiError, apiSuccess }: any =
+      await getApplicationStatusByAplicationId(name);
+
+    if (apiSuccess) setStatus(apiSuccess?.data?.data[0]);
+  };
 
   const handleTabChange = (tab: any) => {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     setselectedTab(tab);
+  };
+  const getSelectedTabIcon = (section: string, tabSection: string) => {
+    console.log(section, tabSection);
+
+    if (selectedTab === tabSection) return <DoneIconSelected />;
+    if (status[`${section}`] !== "pending") return <DoneIcon />;
+
+    return <NotDoneIcon />;
   };
 
   return (
@@ -63,7 +85,8 @@ const DonorApplicationContainer = () => {
                     : "gold-gradient-button-group"
                 } normal-case shadow-none border-transparent text-black-500 text-xs font-medium`}
               >
-                {selectedTab === DONOR_DETAILS ? <DoneIcon /> : <NotDoneIcon />}
+                {getSelectedTabIcon("donor_information", DONOR_DETAILS)}
+                {/* {selectedTab === DONOR_DETAILS ? <DoneIcon /> : <NotDoneIcon />} */}
                 {t("donor-details")}
               </Button>
               <Button
@@ -75,7 +98,13 @@ const DonorApplicationContainer = () => {
                     : "gold-gradient-button-group"
                 } normal-case shadow-none border-transparent text-black-500 text-xs font-medium`}
               >
-                {selectedTab === QUESTIONNAIRE ? <DoneIcon /> : <NotDoneIcon />}
+                {/* {status?.medical_questionnaire !== "pending" ? (
+                  <DoneIcon />
+                ) : (
+                  <NotDoneIcon />
+                )} */}
+                {getSelectedTabIcon("medical_questionnaire", QUESTIONNAIRE)}
+                {/* {selectedTab === QUESTIONNAIRE ? <DoneIcon /> : <NotDoneIcon />} */}
                 {t("questionnaire")}
               </Button>
               <Button
@@ -87,11 +116,20 @@ const DonorApplicationContainer = () => {
                     : "gold-gradient-button-group"
                 } normal-case shadow-none border-transparent text-black-500 text-xs font-medium`}
               >
-                {selectedTab === ELIGIBILITYASSESSMENT ? (
+                {/* {status?.eligibility_assessment !== "pending" ? (
                   <DoneIcon />
                 ) : (
                   <NotDoneIcon />
+                )} */}
+                {getSelectedTabIcon(
+                  "eligibility_assessment",
+                  ELIGIBILITYASSESSMENT
                 )}
+                {/* {selectedTab === ELIGIBILITYASSESSMENT ? (
+                  <DoneIcon />
+                ) : (
+                  <NotDoneIcon />
+                )} */}
                 {t("eligibility-assessment")}
               </Button>
               <Button
@@ -103,7 +141,13 @@ const DonorApplicationContainer = () => {
                     : "gold-gradient-button-group"
                 } normal-case shadow-none border-transparent text-black-500 text-xs font-medium`}
               >
-                {selectedTab === PAYMENTS ? <DoneIcon /> : <NotDoneIcon />}
+                {/* {status?.payments !== "pending" ? (
+                  <DoneIcon />
+                ) : (
+                  <NotDoneIcon />
+                )} */}
+                {getSelectedTabIcon("payments", PAYMENTS)}
+                {/* {selectedTab === PAYMENTS ? <DoneIcon /> : <NotDoneIcon />} */}
                 {t("payment")}
               </Button>
               <Button
@@ -115,7 +159,13 @@ const DonorApplicationContainer = () => {
                     : "gold-gradient-button-group"
                 } normal-case shadow-none border-transparent text-black-500 text-xs font-medium`}
               >
-                {selectedTab === KITSTATUS ? <DoneIcon /> : <NotDoneIcon />}
+                {/* {status?.kit_status !== "pending" ? (
+                  <DoneIcon />
+                ) : (
+                  <NotDoneIcon />
+                )} */}
+                {getSelectedTabIcon("kit_status", KITSTATUS)}
+                {/* {selectedTab === KITSTATUS ? <DoneIcon /> : <NotDoneIcon />} */}
                 {t("kit-status")}
               </Button>
               <Button
@@ -127,7 +177,13 @@ const DonorApplicationContainer = () => {
                     : "gold-gradient-button-group"
                 } normal-case shadow-none border-transparent text-black-500 text-xs font-medium`}
               >
-                {selectedTab === UCUNITSTATUS ? <DoneIcon /> : <NotDoneIcon />}
+                {/* {status?.umbilical_cord_unit_status !== "pending" ? (
+                  <DoneIcon />
+                ) : (
+                  <NotDoneIcon />
+                )} */}
+                {getSelectedTabIcon("umbilical_cord_unit_status", UCUNITSTATUS)}
+                {/* {selectedTab === UCUNITSTATUS ? <DoneIcon /> : <NotDoneIcon />} */}
                 {t("unit-status")}
               </Button>
 
@@ -140,7 +196,15 @@ const DonorApplicationContainer = () => {
                     : "gold-gradient-button-group"
                 } normal-case shadow-none border-transparent text-black-500 text-xs font-medium`}
               >
-                {selectedTab === CERTIFICATE ? <DoneIcon /> : <NotDoneIcon />}
+                {/* {status?.storage_certificate !== "pending" &&
+                selectedTab === CERTIFICATE ? (
+                  <DoneIcon />
+                ) : (
+                  <NotDoneIcon />
+                )} */}
+                {getSelectedTabIcon("storage_certificate", CERTIFICATE)}
+
+                {/* {selectedTab === CERTIFICATE ? <DoneIcon /> : <NotDoneIcon />} */}
                 {t("storage-certificate")}
               </Button>
             </ButtonGroup>

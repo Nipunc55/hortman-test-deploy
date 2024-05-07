@@ -27,6 +27,8 @@ const NotDoneIcon = () => {
         >
           <stop stopColor="#9A793D" />
           <stop offset="1" stopColor="#FFDA91" />
+          {/* <stop stopColor={color} />
+          <stop offset="1" stopColor={secondColor} /> */}
         </linearGradient>
         <clipPath id="clip0_4298_14151">
           <rect width="24" height="24" fill="white" />

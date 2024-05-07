@@ -45,7 +45,7 @@ const QuestionItemModalBody = ({
   const isArabic = locale === "ar";
   useEffect(() => {
     // setQuestion(questions[questionIndex]);
-    console.log("question", question);
+    // console.log("question", question);
     const updateLocale = () => {
       setLocale(i18n.language);
     };
@@ -232,7 +232,7 @@ const QuestionItemModalBody = ({
     if (questionAnswerObject && questionAnswerObject.options.length > 0) {
       inputValue = questionAnswerObject.options[0];
     }
-    console.log(inputValue);
+    // console.log(inputValue);
 
     return inputValue;
   };
@@ -375,6 +375,7 @@ const QuestionItemModalBody = ({
                             ? "checked"
                             : "unchecked"
                         }
+                        disabled
                         // value={answers.includes(option.optionTitle)}
                         className={`h-[22px] w-6 rounded-md checked:bg-white border-[3px] border-primary checked:border-primary`}
                         color="gray"
@@ -478,6 +479,7 @@ const QuestionItemModalBody = ({
                                 className={`flex justify-center items-start`}
                               >
                                 <Checkbox
+                                  disabled
                                   defaultChecked={isCheckboxSelected(
                                     option.title,
                                     innerOption.label
@@ -549,6 +551,7 @@ const QuestionItemModalBody = ({
                       <div className="flex items-center space-x-2.5">
                         <div className={`flex justify-center items-start`}>
                           <Checkbox
+                            disabled
                             defaultChecked={question.answer.includes(
                               option.label
                             )}
@@ -628,6 +631,7 @@ const QuestionItemModalBody = ({
                     <div className="flex items-center space-x-2.5 -ml-3 mt-5">
                       <div className={`flex justify-center items-start`}>
                         <Checkbox
+                          disabled
                           defaultChecked={isCheckboxSelected(
                             option.title,
                             option.label

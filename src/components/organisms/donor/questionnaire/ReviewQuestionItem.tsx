@@ -4,6 +4,7 @@ import i18n from "../../../../i18n";
 import { InputType } from "../../../../redux/types/Questions";
 import EditIcon from "../../../../assets/svg/editIcon";
 import QuestionView from "../../../molecules/admin/modals/QuestionView";
+import EyeIcon from "../../../../assets/svg/eyeIcon";
 
 const ReviewQuestionItem = ({
   setSelectedQuestionIndex,
@@ -131,7 +132,8 @@ const ReviewQuestionItem = ({
               setModalOpen(true);
             }}
           >
-            <EditIcon />
+            <EyeIcon />
+            {/* <EditIcon /> */}
           </button>
           <QuestionView
             open={modalOpen}
