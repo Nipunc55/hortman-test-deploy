@@ -20,6 +20,7 @@ import { useState } from "react";
 import ReviewQuestions from "../../../organisms/donor/questionnaire/ReviewQuestions";
 import CloseIcon from "../../../../assets/svg/notificationIcon";
 import QuestionItemModalBody from "../../../organisms/admin/donorApplication/QuestionItem";
+import QuestionItemTwo from "../../../organisms/admin/donorApplication/QuestionItemTwo";
 // @ts-expect-error This will ignore the type of the library below
 
 // import { status } from "../../../../types/userTypes";
@@ -28,12 +29,14 @@ interface UserCreateModalModalProps {
   open: boolean;
   handleOpen: (value: boolean) => void;
   question: any;
+  type?: number;
 }
 
 const QuestionView = ({
   open,
   handleOpen,
-  question
+  question,
+  type
 }: UserCreateModalModalProps) => {
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -65,10 +68,17 @@ const QuestionView = ({
           </div>
         )}
         <DialogBody className="overflow-y-auto max-h-96" placeholder={""}>
-          <QuestionItemModalBody
-            questionIndex={question?.id - 1}
-            question={question}
-          />
+          {type === 1 ? (
+            <QuestionItemModalBody
+              questionIndex={question?.id - 1}
+              question={question}
+            />
+          ) : (
+            <QuestionItemTwo
+              // questionIndex={question?.id - 1}
+              question={question}
+            />
+          )}
         </DialogBody>
 
         <DialogFooter placeholder={""}></DialogFooter>

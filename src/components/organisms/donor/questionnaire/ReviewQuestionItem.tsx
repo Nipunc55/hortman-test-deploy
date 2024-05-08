@@ -15,7 +15,7 @@ const ReviewQuestionItem = ({
   setSelectedQuestionIndex?: (value: number) => void;
   question: any;
   setError: (value: boolean) => void;
-  type: string;
+  type: number;
 }) => {
   const [locale, setLocale] = useState(i18n.language);
   const [modalOpen, setModalOpen] = useState(false);
@@ -136,6 +136,7 @@ const ReviewQuestionItem = ({
             {/* <EditIcon /> */}
           </button>
           <QuestionView
+            type={type}
             open={modalOpen}
             handleOpen={setModalOpen}
             question={question}

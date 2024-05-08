@@ -445,6 +445,8 @@ const QuestionContainerTwo = () => {
         });
       }
     }
+    let excludeArray = [17, 15, 11, 10, 9, 8, 7];
+    if (excludeArray.includes(currentQuestionIndex + 1)) return answers;
     return answers.filter((ansItem: any, index: number, self: any) => {
       // Check if the current element's index is the first occurrence of its age in the array
       return self.findIndex((p: any) => p.index === ansItem.index) === index;

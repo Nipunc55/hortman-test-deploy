@@ -207,6 +207,15 @@ const Questionnaire = ({ onTabChange }: { onTabChange: any }) => {
                       ...yesQuestion,
                       answer: questionAnswerItem.answer
                     };
+                  } else if (
+                    questionAnswerItem.answerType === INPUT_TYPE_YESANDNO
+                  ) {
+                    yesQuestion = {
+                      ...yesQuestion,
+                      isYesSelected:
+                        questionAnswerItem.answer[0] === "YES" ? true : null,
+                      answer: questionAnswerItem.answer[0]
+                    };
                   } else {
                     yesQuestion = {
                       ...yesQuestion,
@@ -351,6 +360,7 @@ const Questionnaire = ({ onTabChange }: { onTabChange: any }) => {
           {questions?.map((question) => {
             return (
               <ReviewQuestionItem
+                type={1}
                 key={question.id}
                 question={question}
                 setError={setError}
@@ -364,6 +374,7 @@ const Questionnaire = ({ onTabChange }: { onTabChange: any }) => {
           {questionsTwo?.map((question) => {
             return (
               <ReviewQuestionItem
+                type={2}
                 key={question.id}
                 question={question}
                 setError={setError}

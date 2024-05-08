@@ -15,11 +15,17 @@ import {
 import i18n from "../../../../i18n";
 import { updateQuestionsTwo } from "../../../../redux/slices/QuestionsTwo";
 import QuestionInputText from "../../../atoms/donor/inputs/QuestionInputText";
+import ChildQuestionAdmin from "./ChildQuestion";
+import ChildQuestionTwo from "./ChildQuestionTwo";
 
-const QuestionItem = ({ question }: { question: any }) => {
+const QuestionItemTwo = ({ question }: { question: any }) => {
   const dispatch = useDispatch();
   const [locale, setLocale] = useState(i18n.language);
   const isArabic = locale === "ar";
+  console.log(
+    "question TWO",
+    question.isYesSelected && question.yesQuestions !== null
+  );
 
   useEffect(() => {
     const updateLocale = () => {
@@ -592,7 +598,7 @@ const QuestionItem = ({ question }: { question: any }) => {
         {question.isYesSelected && question.yesQuestions !== null && (
           <div className="flex flex-col space-y-5">
             {question.yesQuestions.map((yesQuestion: any) => (
-              <ChildQuestion
+              <ChildQuestionTwo
                 key={yesQuestion.id}
                 question={yesQuestion}
                 parentQuestion={question}
@@ -606,4 +612,4 @@ const QuestionItem = ({ question }: { question: any }) => {
   );
 };
 
-export default QuestionItem;
+export default QuestionItemTwo;

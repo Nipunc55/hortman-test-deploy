@@ -32,7 +32,7 @@ const QuestionItemModalBody = ({
 }: {
   // totalQuestionCount: number;
   questionIndex?: number;
-  setSelectedQuestionIndex: (value: number) => void;
+  setSelectedQuestionIndex?: (value: number) => void;
   // setIsNextButtonVisible?: (value: boolean) => void;
   question: any;
 }) => {
