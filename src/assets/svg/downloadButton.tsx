@@ -20,14 +20,14 @@ export const DownloadIcon = () => {
           stroke="#C8934F"
           stroke-width="2"
           stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinejoin="round"
         />
         <path
           d="M12 4V16"
           stroke="#C8934F"
           stroke-width="2"
           stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinejoin="round"
         />
       </g>
       <defs>

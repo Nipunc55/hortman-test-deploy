@@ -596,7 +596,7 @@ const QuestionItemTwo = ({ question }: { question: any }) => {
       </div>
       <div>
         {question.isYesSelected && question.yesQuestions !== null && (
-          <div className="flex flex-col space-y-5">
+          <div className="flex flex-col space-y-5" key={question.id}>
             {question.yesQuestions.map((yesQuestion: any) => (
               <ChildQuestionTwo
                 key={yesQuestion.id}

@@ -50,7 +50,7 @@ const DonorApplicationContainer = () => {
     setselectedTab(tab);
   };
   const getSelectedTabIcon = (section: string, tabSection: string) => {
-    console.log(section, tabSection);
+    // console.log(section, tabSection);
 
     if (selectedTab === tabSection) return <DoneIconSelected />;
     if (status[`${section}`] !== "pending") return <DoneIcon />;

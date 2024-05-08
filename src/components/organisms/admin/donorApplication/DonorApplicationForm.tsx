@@ -216,12 +216,12 @@ const DonorApplicationReportForm = ({ onTabChange }: { onTabChange: any }) => {
       );
     if (apiSuccess && apiSuccess.status === 200) {
       let numberOfBabies;
-      if (apiSuccess?.data?.data[0]?.answers[0].answer[0] === "No") {
+      if (apiSuccess?.data?.data[0]?.answers[0]?.answer[0] === "No") {
         numberOfBabies = 1;
-      } else if (apiSuccess?.data?.data[0]?.answers[3].answer[0] === "Twins") {
+      } else if (apiSuccess?.data?.data[0]?.answers[3]?.answer[0] === "Twins") {
         numberOfBabies = 2;
       } else if (
-        apiSuccess?.data?.data[0]?.answers[3].answer[0] === "Triplets"
+        apiSuccess?.data?.data[0]?.answers[3]?.answer[0] === "Triplets"
       ) {
         numberOfBabies = 3;
       } else {
@@ -232,7 +232,7 @@ const DonorApplicationReportForm = ({ onTabChange }: { onTabChange: any }) => {
 
       setExpectedDiliveryAnswerd({
         numberOfExpectedBabies: numberOfBabies,
-        numberOfUmbilicalCords: apiSuccess?.data?.data[0]?.answers[1].answer,
+        numberOfUmbilicalCords: apiSuccess?.data?.data[0]?.answers[1]?.answer,
         expectedDateOfDelivery: date,
         expectedHospitalOfDelivery:
           apiSuccess?.data?.data[0]?.answers[2]?.answer[0]
