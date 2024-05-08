@@ -356,7 +356,7 @@ const DonorApplicationReportForm = ({ onTabChange }: { onTabChange: any }) => {
                     // onBlur={() => {
                     //   openDatePicker("MOTHER");
                     // }}
-                    disabled={true}
+                    disabled
                     placeholderText="DD/MM/YYYY"
                     className="w-full h-10 px-3 mt-1 rounded-l-md outline-none"
                   />
@@ -749,6 +749,7 @@ const DonorApplicationReportForm = ({ onTabChange }: { onTabChange: any }) => {
                       onChange={() => {
                         setBankingType("");
                       }}
+                      disabled={true}
                     />
                   </div>
                 </div>

@@ -21,6 +21,7 @@ import ChildQuestion from "../../donor/questionnaire/ChildQuestion";
 import { getSubmissionByApplicationIdAndQuestionId } from "../../../../api/submission";
 import { QUESTIONNAIRE_ONE } from "../../../../utils/constants/common";
 import { RootState } from "../../../../redux/store";
+import ChildQuestionAdmin from "./ChildQuestion";
 
 const QuestionItemModalBody = ({
   // totalQuestionCount,
@@ -701,7 +702,7 @@ const QuestionItemModalBody = ({
         {question.isYesSelected && question.yesQuestions !== null && (
           <div className="flex flex-col space-y-5 mx-5">
             {question.yesQuestions.map((yesQuestion) => (
-              <ChildQuestion
+              <ChildQuestionAdmin
                 key={yesQuestion.id}
                 question={yesQuestion}
                 parentQuestion={question}

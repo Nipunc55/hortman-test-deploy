@@ -55,7 +55,7 @@ const DonorApplicationTable = () => {
     }
   };
 
-  console.log(applicationData + "applicationData");
+  // console.log(applicationData + "applicationData");
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
@@ -96,7 +96,7 @@ const DonorApplicationTable = () => {
 
     setFilteredReportsData(filteredData);
     void getDonorApplicationsData();
-    console.log(filteredReportsData + "filtered Data");
+    // console.log(filteredReportsData + "filtered Data");
   };
 
   return (

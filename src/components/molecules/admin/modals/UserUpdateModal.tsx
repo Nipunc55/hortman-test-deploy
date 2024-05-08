@@ -184,7 +184,7 @@ const UserUpdateModal = ({
               Mobile
             </span>
             <div className="flex w-full gold-gradient-input-border-select rounded-lg bg-white h-10">
-              <Menu placement="bottom-start">
+              {/* <Menu placement="bottom-start">
                 <MenuHandler>
                   <Button
                     placeholder={""}
@@ -225,7 +225,7 @@ const UserUpdateModal = ({
                       );
                     })}
                 </MenuList>
-              </Menu>
+              </Menu> */}
 
               <Input
                 type="tel"
@@ -237,7 +237,7 @@ const UserUpdateModal = ({
                 containerProps={{
                   className: "w-full"
                 }}
-                value={values.mobileNumber.slice(4)}
+                value={values.mobileNumber}
                 onChange={(e) => {
                   void formik.setFieldValue("mobileNumber", e.target.value);
                 }}

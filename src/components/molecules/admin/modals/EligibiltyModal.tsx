@@ -79,8 +79,8 @@ const EligibilityModal = ({ open, handleOpen }: NotificationsModalProps) => {
             values.notificationType,
             values.user,
             values.language,
-            values.reviewedby,
-            values.application
+            values.application,
+            values.reviewedby
           );
 
         if (values.notificationType === "Eligibility Rejection")
@@ -90,8 +90,8 @@ const EligibilityModal = ({ open, handleOpen }: NotificationsModalProps) => {
             values.notificationType,
             values.user,
             values.language,
-            values.reviewedby,
-            values.application
+            values.application,
+            values.reviewedby
           );
 
         if (values.notificationType === "Eligibility Review")
@@ -101,8 +101,8 @@ const EligibilityModal = ({ open, handleOpen }: NotificationsModalProps) => {
             values.notificationType,
             values.user,
             values.language,
-            values.reviewedby,
-            values.application
+            values.application,
+            values.reviewedby
           );
 
         const { apiError: updateAppApiError }: any =

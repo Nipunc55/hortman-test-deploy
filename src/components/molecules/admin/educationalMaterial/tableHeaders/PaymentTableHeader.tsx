@@ -106,28 +106,6 @@ const PaymentTableHeader = ({
           </div>
         </div>
         <div className="flex flex-col w-9/12">
-          <div className="">{t("to")}</div>
-          <div className="w-full relative flex mt-0.75 justify-between items-center">
-            <DatePicker
-              ref={datePickerRef}
-              onChange={handleDateChange}
-              selected={toDate}
-              dateFormat="dd/MM/yyyy"
-              // onBlur={openDatePicker}
-              placeholderText="DD/MM/YYYY"
-              className="w-full h-10 px-3 mt-1 rounded-md outline-none"
-              wrapperClassName="full-width-datepicker-wrapper gold-gradient-input-border"
-            />
-            <div
-              onClick={openDatePicker}
-              // onBlur={openDatePicker}
-              className="absolute top-2 right-2.5 cursor-pointer"
-            >
-              <DateIcon />
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col w-9/12">
           <div className="">{t("from")}</div>
           <div className="w-full relative flex mt-0.75 justify-between items-center">
             <DatePicker
@@ -143,6 +121,28 @@ const PaymentTableHeader = ({
             <div
               onClick={openDatePickerFrom}
               onBlur={openDatePickerFrom}
+              className="absolute top-2 right-2.5 cursor-pointer"
+            >
+              <DateIcon />
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col w-9/12">
+          <div className="">{t("to")}</div>
+          <div className="w-full relative flex mt-0.75 justify-between items-center">
+            <DatePicker
+              ref={datePickerRef}
+              onChange={handleDateChange}
+              selected={toDate}
+              dateFormat="dd/MM/yyyy"
+              // onBlur={openDatePicker}
+              placeholderText="DD/MM/YYYY"
+              className="w-full h-10 px-3 mt-1 rounded-md outline-none"
+              wrapperClassName="full-width-datepicker-wrapper gold-gradient-input-border"
+            />
+            <div
+              onClick={openDatePicker}
+              // onBlur={openDatePicker}
               className="absolute top-2 right-2.5 cursor-pointer"
             >
               <DateIcon />
