@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { PopupFormSubmitButton } from "../../../../atoms/admin/buttons/PopupButtons";
 import DropDownList from "../../../../atoms/admin/dropDownList/DropDownList";
 import TextAreaInput from "../../../../atoms/admin/inputs/TextAreaInput";
 
 const ReviewdByModal = () => {
+  const [selectedValue, setSelectedValue] = useState("ADMIN");
+  const [remarks, setRemarks] = useState("");
   const options = [
     { value: "ADMIN", label: "Administrator" },
     { value: "DONOR", label: "Donor" },
@@ -14,16 +17,20 @@ const ReviewdByModal = () => {
       <DropDownList
         options={options}
         name="role"
-        value={""}
+        value={options.filter((item) => item.value == selectedValue)[0]?.label}
         // onSelect={() => {}}
-        onChange={() => {}}
+        onChange={(e) => {
+          setSelectedValue(e.value);
+        }}
         placeholder="Received By:"
       />
       <div className="pt-5">
         <TextAreaInput
           placeholder="Type your reasons here...."
-          value={""}
-          onChange={() => {}}
+          value={remarks}
+          onChange={(e) => {
+            setRemarks(e.value);
+          }}
           name="comments"
           label="Remarks"
         />

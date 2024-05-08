@@ -46,7 +46,7 @@ const QuestionItemModalBody = ({
   const isArabic = locale === "ar";
   useEffect(() => {
     // setQuestion(questions[questionIndex]);
-    // console.log("question", question);
+    console.log("question", question);
     const updateLocale = () => {
       setLocale(i18n.language);
     };
@@ -267,7 +267,7 @@ const QuestionItemModalBody = ({
       QUESTIONNAIRE_ONE
     );
 
-    setAnswers(apiSuccess?.data?.data[0]?.answers);
+    // setAnswers(apiSuccess?.data?.data[0]?.answers);
   };
   return (
     <div className="flex flex-col space-y-4">
