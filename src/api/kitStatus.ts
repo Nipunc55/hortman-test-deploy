@@ -128,3 +128,27 @@ export const getApplicationStatusByAplicationId = async (id: string) => {
 
   return { apiSuccess, apiError };
 };
+export const updateDelivery = async (
+  remarks: string,
+  received_by: string,
+  application: string
+) => {
+  let apiSuccess = null;
+  let apiError = null;
+
+  const configurations = await getConfigurations();
+  await axios
+    .patch(
+      `${API_URL}/pickup/receive/application/${application}`,
+      { remarks, received_by },
+      configurations
+    )
+    .then(function (response) {
+      apiSuccess = response;
+    })
+    .catch(function (error) {
+      apiError = error;
+    });
+
+  return { apiSuccess, apiError };
+};

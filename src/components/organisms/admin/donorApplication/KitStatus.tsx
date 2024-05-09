@@ -85,6 +85,8 @@ const KitStatus = () => {
 
     if (response.apiSuccess) {
       const apiSuccess = response.apiSuccess as any;
+      // console.log(apiSuccess?.data?.data);
+
       setApplicationKitDispatchDetails(apiSuccess?.data?.data);
     }
   };
@@ -143,13 +145,21 @@ const KitStatus = () => {
           </div>
           <div className="flex justify-between items-start w-full">
             <div className="flex flex-col gap-2.5">
-              {/* <div className="">August 19, 2023 23:15:30</div>
-              <div className="">Ibrar Ahmed</div>
+              <div className="">
+                {appliucationKitDispatchDetails?.delivery_date_time ?? "N/A"}
+              </div>
+              <div className="">
+                {" "}
+                {appliucationKitDispatchDetails?.driver?.name ?? "N/A"}
+              </div>
               <div className="flex flex-col gap-1.5">
-                <span className="">Mr. abdullah naim</span>
-                <span className="">+971 50 1234567</span>
-                <span>27V7+QC5 - Arabian Ranches - Alvorada - Dubai</span>
-              </div> */}
+                <span className="">
+                  {" "}
+                  {appliucationKitDispatchDetails?.received_by?.name ?? "N/A"}
+                </span>
+                {/* <span className="">+971 50 1234567</span> */}
+                <span>2{appliucationKitDispatchDetails?.address ?? ""}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -185,19 +195,28 @@ const KitStatus = () => {
       <div className="border-x border-secondary flex w-full text-black text-base font-normal capitalize px-6 pt-3 pb-6">
         <div className="flex w-full py-4">
           <div className="w-1/3 flex flex-col gap-2.5">
-            <div>Received Date & Time</div>
-            <div>Received By</div>
-            <div>Remarks</div>
+            <div>Kit Received Date</div>
+            <div>Pickup Person</div>
+            <div>Collection Information</div>
           </div>
           <div className="flex justify-between items-start w-full">
             <div className="flex flex-col gap-2.5">
-              {/* <div className="font-medium">September 01, 2023 23:15:30</div>
-              <div className="font-medium">Ibrar Ahmed</div>
+              <div className="font-medium">
+                {" "}
+                {appliucationKitPickupDetails?.received_date_time || "N/A"}
+              </div>
+              <div className="font-medium">
+                {appliucationKitPickupDetails?.received_by?.name || "N/A"}
+              </div>
               <div className="flex flex-col">
-                <span className="font-medium">Mr. abdullah naim</span>
-                <span className="font-medium">+971 50 1234567</span>
-                <span>27V7+QC5 - Arabian Ranches - Alvorada - Dubai</span>
-              </div> */}
+                <span className="font-medium">
+                  {appliucationKitPickupDetails?.contact_person || "N/A"}
+                </span>
+                <span className="font-medium">
+                  {appliucationKitPickupDetails?.contact_number || "N/A"}
+                </span>
+                <span>{appliucationKitPickupDetails?.address || "N/A"}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -211,9 +230,15 @@ const KitStatus = () => {
           </div>
           <div className="flex justify-between items-start w-full">
             <div className="flex flex-col gap-1.5">
-              {/* <div>September 01, 2023 23:15:30</div>
-              <div>Mr. Shahin</div>
-              <div>Received by Shahin from Ibrar Ahmad </div>*/}
+              <div>
+                {" "}
+                {appliucationKitPickupDetails?.received_date_time || "N/A"}
+              </div>
+              <div>
+                {" "}
+                {appliucationKitPickupDetails?.received_by?.name || "N/A"}
+              </div>
+              <div> {appliucationKitPickupDetails?.instructions || "N/A"}</div>
             </div>
             <div>
               <button

@@ -13,6 +13,7 @@ import { createKitDispatch, getDrivers } from "../../../../../api/kitStatus";
 import { getDonorApplicationById } from "../../../../../api/donor_application";
 import dayjs from "dayjs";
 import { updateApplicationStatusByUser } from "../../../../../api/donor";
+import { submitNofications } from "../../../../../api/notifications";
 
 interface KitDispatchFormTypes {
   delivery_date_time: Date;
@@ -60,6 +61,14 @@ const KitDispatchModal = ({ handleClose }: { handleClose: () => void }) => {
           { type: "kit_status", date: currentDate },
           name!
         );
+      await submitNofications(
+        "Kit Dispatch",
+        "Kit is Dispatched",
+        "Custom Notification",
+        payload?.driver,
+        "en",
+        name
+      );
       if (updateAppApiError) {
         console.log(updateAppApiError.response.data.message);
 
