@@ -378,7 +378,8 @@ const ChildQuestionAdmin = ({
               <QuestionInputText
                 placeholder=""
                 label=""
-                onInputChange={handleTextInputChange}
+                // onInputChange={handleTextInputChange}
+                onInputChange={() => {}}
                 value={question.answer.toString()}
                 styles={{ width: "100%", height: "40px" }}
                 key={"key"}
@@ -416,14 +417,13 @@ const ChildQuestionAdmin = ({
                       }`}
                     >
                       <Checkbox
-                        disabled={true}
                         defaultChecked={question.answer.includes(
                           option.optionTitle
                         )}
                         className={`h-[22px] w-6 rounded-md checked:bg-white border-[3px] border-primary checked:border-primary`}
                         color="gray"
                         onChange={(e) => {
-                          handleCheckbox(e.target.checked, option.optionTitle);
+                          // handleCheckbox(e.target.checked, option.optionTitle);
                         }}
                         icon={
                           <svg
@@ -442,6 +442,7 @@ const ChildQuestionAdmin = ({
                             />
                           </svg>
                         }
+                        disabled={true}
                         crossOrigin={undefined}
                       />
                     </div>
@@ -528,12 +529,12 @@ const ChildQuestionAdmin = ({
                                   className={`h-[22px] w-6 rounded-md checked:bg-white border-[3px] border-primary checked:border-primary`}
                                   color="gray"
                                   onChange={(e) => {
-                                    handleMultipleCheckbox(
-                                      e.target.checked,
-                                      innerOption.label,
-                                      option.title,
-                                      option.type.toString()
-                                    );
+                                    // handleMultipleCheckbox(
+                                    //   e.target.checked,
+                                    //   innerOption.label,
+                                    //   option.title,
+                                    //   option.type.toString()
+                                    // );
                                   }}
                                   icon={
                                     <svg
@@ -552,6 +553,7 @@ const ChildQuestionAdmin = ({
                                       />
                                     </svg>
                                   }
+                                  disabled={true}
                                   crossOrigin={undefined}
                                 />
                               </div>
@@ -593,12 +595,12 @@ const ChildQuestionAdmin = ({
                             className={`h-[22px] w-6 rounded-md checked:bg-white border-[3px] border-primary checked:border-primary`}
                             color="gray"
                             onChange={(e) => {
-                              handleMultipleCheckbox(
-                                e.target.checked,
-                                option.label,
-                                option.title,
-                                option.type
-                              );
+                              // handleMultipleCheckbox(
+                              //   e.target.checked,
+                              //   option.label,
+                              //   option.title,
+                              //   option.type
+                              // );
                             }}
                             icon={
                               <svg
@@ -617,6 +619,7 @@ const ChildQuestionAdmin = ({
                                 />
                               </svg>
                             }
+                            disabled={true}
                             crossOrigin={undefined}
                           />
                         </div>
@@ -635,11 +638,11 @@ const ChildQuestionAdmin = ({
                           placeholder=""
                           label=""
                           onInputChange={(e: any) => {
-                            handleMultipleTextInputChange(
-                              e,
-                              option.optionTitle,
-                              option.type
-                            );
+                            // handleMultipleTextInputChange(
+                            //   e,
+                            //   option.optionTitle,
+                            //   option.type
+                            // );
                           }}
                           value={getInputValue(option.optionTitle)}
                           styles={{ width: "100%", height: "32px" }}
@@ -660,12 +663,12 @@ const ChildQuestionAdmin = ({
                           className={`h-[22px] w-6 rounded-md checked:bg-white border-[3px] border-primary checked:border-primary`}
                           color="gray"
                           onChange={(e) => {
-                            handleMultipleCheckbox(
-                              e.target.checked,
-                              option.label,
-                              option.title,
-                              option.type
-                            );
+                            // handleMultipleCheckbox(
+                            //   e.target.checked,
+                            //   option.label,
+                            //   option.title,
+                            //   option.type
+                            // );
                           }}
                           icon={
                             <svg
@@ -684,6 +687,7 @@ const ChildQuestionAdmin = ({
                               />
                             </svg>
                           }
+                          disabled={true}
                           crossOrigin={undefined}
                         />
                       </div>

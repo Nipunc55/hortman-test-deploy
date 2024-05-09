@@ -126,12 +126,11 @@ const KitStatus = () => {
           {appliucationKitDispatchDetails?.driver?.name ?? ""}
         </div>
         <div className="flex-[2]">
-          <div
-            className="flex justify-between items-center"
-            onClick={() => openModal("Dispatch Detail")}
-          >
+          <div className="flex justify-between items-center">
             <span>{appliucationKitDispatchDetails?.instructions ?? ""}</span>
-            <EyeIcon />
+            <div onClick={() => openModal("Dispatch Detail")}>
+              <EyeIcon />
+            </div>
           </div>
         </div>
       </div>
@@ -182,12 +181,11 @@ const KitStatus = () => {
           {appliucationKitPickupDetails?.driver?.name}
         </div>
         <div className="flex-[2]">
-          <div
-            className="flex justify-between items-center"
-            onClick={() => openModal("Collection Detail")}
-          >
+          <div className="flex justify-between items-center">
             <span>{appliucationKitPickupDetails?.instructions ?? ""}</span>
-            <EyeIcon />
+            <div onClick={() => openModal("Collection Detail")}>
+              <EyeIcon />
+            </div>
           </div>
         </div>
       </div>

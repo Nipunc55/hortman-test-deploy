@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import TextAreaInput from "../../../../atoms/admin/inputs/TextAreaInput";
 import { getKitDispatchDetails } from "../../../../../api/kitStatus";
 import { useParams } from "react-router-dom";
+import LoaderIconSvg from "../../../../../assets/svg/loaderIcon";
 
 const DispatchDetailsModal = () => {
   const { name } = useParams();
+  const [isLoading, setLoading] = useState(true);
   const [appliucationKitDispatchDetails, setApplicationKitDispatchDetails] =
     useState<any>({
       application: {
@@ -27,11 +29,19 @@ const DispatchDetailsModal = () => {
       const apiSuccess = response.apiSuccess as any;
       setApplicationKitDispatchDetails(apiSuccess?.data?.data);
     }
+    setLoading(false);
   };
 
   useEffect(() => {
     void getKitDispatchDetail();
   }, []);
+  if (isLoading) {
+    return (
+      <div className="mr-3">
+        <LoaderIconSvg />
+      </div>
+    );
+  }
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col">

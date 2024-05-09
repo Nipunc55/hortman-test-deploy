@@ -426,7 +426,8 @@ const ChildQuestionTwo = ({
               <QuestionInputText
                 placeholder=""
                 label={""}
-                onInputChange={handleTextInputChange}
+                // onInputChange={handleTextInputChange}
+                onInputChange={() => {}}
                 value={question.answer.toString()}
                 styles={{ width: "100%", height: "40px" }}
                 key={"key"}
@@ -470,7 +471,7 @@ const ChildQuestionTwo = ({
                         className={`h-[22px] w-6 rounded-md checked:bg-white border-[3px] border-primary checked:border-primary`}
                         color="gray"
                         onChange={(e) => {
-                          handleCheckbox(e.target.checked, option.optionTitle);
+                          // handleCheckbox(e.target.checked, option.optionTitle);
                         }}
                         icon={
                           <svg
@@ -489,6 +490,7 @@ const ChildQuestionTwo = ({
                             />
                           </svg>
                         }
+                        disabled={true}
                         crossOrigin={undefined}
                       />
                     </div>
@@ -565,12 +567,12 @@ const ChildQuestionTwo = ({
                                   className={`h-[22px] w-6 rounded-md checked:bg-white border-[3px] border-primary checked:border-primary`}
                                   color="gray"
                                   onChange={(e) => {
-                                    handleMultipleCheckbox(
-                                      e.target.checked,
-                                      innerOption.label,
-                                      option.title,
-                                      option.type.toString()
-                                    );
+                                    // handleMultipleCheckbox(
+                                    //   e.target.checked,
+                                    //   innerOption.label,
+                                    //   option.title,
+                                    //   option.type.toString()
+                                    // );
                                   }}
                                   icon={
                                     <svg
@@ -589,6 +591,7 @@ const ChildQuestionTwo = ({
                                       />
                                     </svg>
                                   }
+                                  disabled={true}
                                   crossOrigin={undefined}
                                 />
                               </div>
@@ -629,12 +632,12 @@ const ChildQuestionTwo = ({
                             className={`h-[22px] w-6 rounded-md checked:bg-white border-[3px] border-primary checked:border-primary`}
                             color="gray"
                             onChange={(e) => {
-                              handleMultipleCheckbox(
-                                e.target.checked,
-                                option.label,
-                                option.title,
-                                option.type
-                              );
+                              // handleMultipleCheckbox(
+                              //   e.target.checked,
+                              //   option.label,
+                              //   option.title,
+                              //   option.type
+                              // );
                             }}
                             icon={
                               <svg
@@ -653,6 +656,7 @@ const ChildQuestionTwo = ({
                                 />
                               </svg>
                             }
+                            disabled={true}
                             crossOrigin={undefined}
                           />
                         </div>
@@ -701,12 +705,12 @@ const ChildQuestionTwo = ({
                           className={`h-[22px] w-6 rounded-md checked:bg-white border-[3px] border-primary checked:border-primary`}
                           color="gray"
                           onChange={(e) => {
-                            handleMultipleCheckbox(
-                              e.target.checked,
-                              option.label,
-                              option.title,
-                              option.type
-                            );
+                            // handleMultipleCheckbox(
+                            //   e.target.checked,
+                            //   option.label,
+                            //   option.title,
+                            //   option.type
+                            // );
                           }}
                           icon={
                             <svg
@@ -725,6 +729,7 @@ const ChildQuestionTwo = ({
                               />
                             </svg>
                           }
+                          disabled={true}
                           crossOrigin={undefined}
                         />
                       </div>

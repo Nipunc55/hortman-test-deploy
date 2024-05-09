@@ -266,26 +266,26 @@ const QuestionItemTwo = ({ question }: { question: any }) => {
             <QuestionButton
               text={`${t("yes")}`}
               onClick={() => {
-                const questionUpdated: QuestionTwoType = {
-                  ...question,
-                  isYesSelected: true,
-                  answer: "YES"
-                };
-                dispatch(updateQuestionsTwo(questionUpdated));
+                // const questionUpdated: QuestionTwoType = {
+                //   ...question,
+                //   isYesSelected: true,
+                //   answer: "YES"
+                // };
+                // dispatch(updateQuestionsTwo(questionUpdated));
               }}
               selected={question.answer === "YES"}
+              // disable
             />
             <QuestionButton
               selected={question.answer === "NO"}
               text={`${t("no")}`}
               onClick={() => {
-                const questionUpdated: QuestionTwoType = {
-                  ...question,
-                  isYesSelected: false,
-                  answer: "NO"
-                };
-
-                dispatch(updateQuestionsTwo(questionUpdated));
+                // const questionUpdated: QuestionTwoType = {
+                //   ...question,
+                //   isYesSelected: false,
+                //   answer: "NO"
+                // };
+                // dispatch(updateQuestionsTwo(questionUpdated));
               }}
             />
           </div>
@@ -318,7 +318,7 @@ const QuestionItemTwo = ({ question }: { question: any }) => {
                         className={`h-[22px] w-6 rounded-md checked:bg-white border-[3px] border-primary checked:border-primary`}
                         color="gray"
                         onChange={(e) => {
-                          handleCheckbox(e.target.checked, option.optionTitle);
+                          // handleCheckbox(e.target.checked, option.optionTitle);
                         }}
                         icon={
                           <svg
@@ -337,6 +337,7 @@ const QuestionItemTwo = ({ question }: { question: any }) => {
                             />
                           </svg>
                         }
+                        disabled={true}
                         crossOrigin={undefined}
                       />
                     </div>
@@ -409,12 +410,12 @@ const QuestionItemTwo = ({ question }: { question: any }) => {
                                   className={`h-[22px] w-6 rounded-md checked:bg-white border-[3px] border-primary checked:border-primary`}
                                   color="gray"
                                   onChange={(e) => {
-                                    handleMultipleCheckbox(
-                                      e.target.checked,
-                                      innerOption.label,
-                                      option.title,
-                                      option.type.toString()
-                                    );
+                                    // handleMultipleCheckbox(
+                                    //   e.target.checked,
+                                    //   innerOption.label,
+                                    //   option.title,
+                                    //   option.type.toString()
+                                    // );
                                   }}
                                   icon={
                                     <svg
@@ -433,6 +434,7 @@ const QuestionItemTwo = ({ question }: { question: any }) => {
                                       />
                                     </svg>
                                   }
+                                  disabled={true}
                                   crossOrigin={undefined}
                                 />
                               </div>
@@ -473,12 +475,12 @@ const QuestionItemTwo = ({ question }: { question: any }) => {
                             className={`h-[22px] w-6 rounded-md checked:bg-white border-[3px] border-primary checked:border-primary`}
                             color="gray"
                             onChange={(e) => {
-                              handleMultipleCheckbox(
-                                e.target.checked,
-                                option.label,
-                                option.title,
-                                option.type
-                              );
+                              // handleMultipleCheckbox(
+                              //   e.target.checked,
+                              //   option.label,
+                              //   option.title,
+                              //   option.type
+                              // );
                             }}
                             icon={
                               <svg
@@ -497,6 +499,7 @@ const QuestionItemTwo = ({ question }: { question: any }) => {
                                 />
                               </svg>
                             }
+                            disabled={true}
                             crossOrigin={undefined}
                           />
                         </div>
@@ -545,12 +548,12 @@ const QuestionItemTwo = ({ question }: { question: any }) => {
                           className={`h-[22px] w-6 rounded-md checked:bg-white border-[3px] border-primary checked:border-primary`}
                           color="gray"
                           onChange={(e) => {
-                            handleMultipleCheckbox(
-                              e.target.checked,
-                              option.label,
-                              option.title,
-                              option.type
-                            );
+                            // handleMultipleCheckbox(
+                            //   e.target.checked,
+                            //   option.label,
+                            //   option.title,
+                            //   option.type
+                            // );
                           }}
                           icon={
                             <svg
@@ -569,6 +572,7 @@ const QuestionItemTwo = ({ question }: { question: any }) => {
                               />
                             </svg>
                           }
+                          disabled={true}
                           crossOrigin={undefined}
                         />
                       </div>

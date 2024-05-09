@@ -11,6 +11,7 @@ import BasicButton from "../../../../atoms/admin/buttons/BasicButton";
 import { createKitPickup, getDrivers } from "../../../../../api/kitStatus";
 import { getDonorApplicationById } from "../../../../../api/donor_application";
 import { useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 interface KitDispatchFormTypes {
   pickup_date_time: Date;
@@ -52,9 +53,8 @@ const KitCollectModal = ({ handleClose }: { handleClose: () => void }) => {
     if (apiSuccess) {
       handleClose();
     } else if (apiError) {
-      console.log(apiError);
-
-      // alert("Error");
+      // console.log(apiError?.response?.data?.message);
+      toast.error(apiError?.response?.data?.message);
     }
   };
 
@@ -254,6 +254,7 @@ const KitCollectModal = ({ handleClose }: { handleClose: () => void }) => {
           />
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

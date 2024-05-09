@@ -14,6 +14,7 @@ import { getDonorApplicationById } from "../../../../../api/donor_application";
 import dayjs from "dayjs";
 import { updateApplicationStatusByUser } from "../../../../../api/donor";
 import { submitNofications } from "../../../../../api/notifications";
+import { ToastContainer, toast } from "react-toastify";
 
 interface KitDispatchFormTypes {
   delivery_date_time: Date;
@@ -70,13 +71,17 @@ const KitDispatchModal = ({ handleClose }: { handleClose: () => void }) => {
         name
       );
       if (updateAppApiError) {
-        console.log(updateAppApiError.response.data.message);
+        toast.error(updateAppApiError?.response?.data?.message);
+        console.log(updateAppApiError?.response?.data?.message);
 
         // alert(updateAppApiError.response.data.message);
       }
       handleClose();
     } else if (apiError) {
-      alert("Error");
+      toast.error(apiError?.response?.data?.message);
+      // console.log(apiError?.response?.data?.message);
+
+      // alert("Error");
     }
   };
 
@@ -272,6 +277,7 @@ const KitDispatchModal = ({ handleClose }: { handleClose: () => void }) => {
           />
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
